@@ -1,1 +1,1 @@
-clock: python sxm_collect.py
+worker: python sxm_collect.py
