@@ -1,0 +1,130 @@
+{
+   "channelMetadataResponse":{
+      "messages":{
+         "code":100,
+         "message":"Successful request"
+      },
+      "status":1,
+      "metaData":{
+         "channelId":"hotjamz",
+         "channelName":"The Heat",
+         "channelNumber":46,
+         "currentEvent":{
+            "artists":{
+               "id":"",
+               "name":"Colonel Loud\/Ricco Barrino"
+            },
+            "baseUrl":"http:\/\/www.siriusxm.com\/albumart\/",
+            "epgInfo":{
+               "program":{
+                  "description":"Dion Summers brings knowledge of and passion for hip-hop and R&B to The Heat, blazing the hottest R&B hits from artists including Beyonce, Alicia Keys, Keri Hilson and more.",
+                  "episodes":{
+                     "description":"Dion Summers brings knowledge of and passion for hip-hop and R&B to The Heat, blazing the hottest R&B hits from artists including Beyonce, Alicia Keys, Keri Hilson and more.",
+                     "duration":21600,
+                     "episodeId":3104620,
+                     "firstRun":false,
+                     "showId":582,
+                     "startTime":"2016-05-17T12:00:00Z",
+                     "title":"The Heat with Dion"
+                  },
+                  "firstRun":false,
+                  "live":false,
+                  "showId":582,
+                  "startTime":"2016-05-17T12:00:00Z",
+                  "title":"The Heat with Dion"
+               },
+               "segment":{
+                  "description":"Dion Summers brings knowledge of and passion for hip-hop and R&B to The Heat, blazing the hottest R&B hits from artists including Beyonce, Alicia Keys, Keri Hilson and more.",
+                  "duration":21600,
+                  "segmentId":3104620,
+                  "startTime":"2016-05-17T12:00:00Z"
+               }
+            },
+            "keyIndex":5,
+            "keyValue":"12345678901234567890123456789012",
+            "siriusXMId":339744583,
+            "song":{
+               "album":{
+                  "name":"CD Single"
+               },
+               "composer":"",
+               "creativeArts":[
+                  {
+                     "encrypted":false,
+                     "size":"THUMBNAIL",
+                     "type":"IMAGE",
+                     "url":"Live\/Default\/DefaultMDS_t_46.jpg"
+                  },
+                  {
+                     "encrypted":false,
+                     "size":"SMALL",
+                     "type":"IMAGE",
+                     "url":"Live\/Default\/DefaultMDS_s_46.jpg"
+                  },
+                  {
+                     "encrypted":false,
+                     "size":"MEDIUM",
+                     "type":"IMAGE",
+                     "url":"Live\/Default\/DefaultMDS_m_46.jpg"
+                  },
+                  {
+                     "encrypted":false,
+                     "size":"LARGE",
+                     "type":"IMAGE",
+                     "url":""
+                  },
+                  {
+                     "encrypted":false,
+                     "type":"BIO",
+                     "url":""
+                  },
+                  {
+                     "encrypted":false,
+                     "type":"REVIEWS",
+                     "url":""
+                  },
+                  {
+                     "encrypted":true,
+                     "size":"THUMBNAIL",
+                     "type":"IMAGE",
+                     "url":"NY_Assets_1\/Default_Content\/5_DefaultMDS_t_46.jpg"
+                  },
+                  {
+                     "encrypted":true,
+                     "size":"SMALL",
+                     "type":"IMAGE",
+                     "url":"NY_Assets_1\/Default_Content\/5_DefaultMDS_s_46.jpg"
+                  },
+                  {
+                     "encrypted":true,
+                     "size":"MEDIUM",
+                     "type":"IMAGE",
+                     "url":"NY_Assets_1\/Default_Content\/5_DefaultMDS_m_46.jpg"
+                  },
+                  {
+                     "encrypted":true,
+                     "size":"LARGE",
+                     "type":"IMAGE",
+                     "url":""
+                  },
+                  {
+                     "encrypted":true,
+                     "type":"BIO",
+                     "url":""
+                  },
+                  {
+                     "encrypted":true,
+                     "type":"REVIEWS",
+                     "url":""
+                  }
+               ],
+               "id":"",
+               "name":"No Ratchets"
+            },
+            "startTime":"2016-05-17T20:17:56Z"
+         },
+         "dateTime":"2016-05-17T20:19:01.820Z",
+         "version":1.1
+      }
+   }
+}
