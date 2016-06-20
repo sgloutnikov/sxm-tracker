@@ -1,25 +1,18 @@
 from apscheduler.schedulers.blocking import BlockingScheduler
-import time
 import logging.config
 
 logging.config.fileConfig('logging_config.ini')
 logger = logging.getLogger(__name__)
 
 
-def timed_job():
-    print('Work Work!')
-    logger.info("Log Work")
-    more_work()
-
-
-def more_work():
-    time.sleep(3)
-    print("More Work...")
-    logger.info("Log More Work")
+def collect_trigger():
+    # TODO: Look into Redis Queue (http://python-rq.org)
+    logger.info("Log Work Work!")
 
 
 if __name__ == "__main__":
-    logger.info("Starting")
+    # TODO: When in django, probably will have to move to BackgroundScheduler
     scheduler = BlockingScheduler()
-    scheduler.add_job(timed_job, 'interval', seconds=30)
+    scheduler.add_job(collect_trigger, 'interval', seconds=30)
     scheduler.start()
+
