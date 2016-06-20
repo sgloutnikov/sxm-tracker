@@ -21,5 +21,5 @@ def more_work():
 if __name__ == "__main__":
     logger.info("Starting")
     scheduler = BlockingScheduler()
-    scheduler.add_job(timed_job, 'interval', seconds=10)
+    scheduler.add_job(timed_job, 'interval', seconds=30)
     scheduler.start()
