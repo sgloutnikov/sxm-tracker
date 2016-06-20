@@ -8,7 +8,7 @@ logger = logging.getLogger(__name__)
 MONGODB_URI = os.environ.get('MONGODB_URI')
 
 client = MongoClient(MONGODB_URI)
-db = client.sxm
+db = client.get_default_database()
 logger.info("DB Initialized.")
 
 
