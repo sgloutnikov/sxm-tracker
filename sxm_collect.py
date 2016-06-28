@@ -4,7 +4,7 @@ from db import db_manager
 from api import api_manager
 
 
-logging.config.fileConfig('logging_config.ini')
+logging.config.fileConfig('logging_config.ini', disable_existing_loggers=False)
 logger = logging.getLogger(__name__)
 
 

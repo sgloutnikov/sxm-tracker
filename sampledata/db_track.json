@@ -1,0 +1,14 @@
+{
+  "numberPlays": 15,
+  "lastHeard": "2016-06-28T17:48:24.199Z",
+  "spotify": {
+    "artist": "Artist Name",
+    "song": "Song Name",
+    "url": "www.spotify.com/asdf",
+    "albumName": "Album Name",
+    "albumImage": "cdn.spotify.com/...jpg"
+  },
+  "firstHeard": "2016-06-28T17:48:24.199Z",
+  "artists": "Artist Names",
+  "song": "Song Name"
+}
