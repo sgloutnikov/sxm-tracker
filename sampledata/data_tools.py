@@ -1,7 +1,10 @@
 import json
+from pymongo import MongoClient
 
+'''Tools script for one time usage/cases'''
 
 FILE_NAME = 'full_sample_data.json'
+MONGODB_URI = 'mongodb://localhost:27017/sxm'
 
 
 # Transform dumped data to JSON array
@@ -41,5 +44,19 @@ def writeArtistSongFile():
     file.close()
 
 
-convertToJSONArray()
-writeArtistSongFile()
+def backFillSampleData():
+    pass
+
+
+def insertDummyRecord():
+    client = MongoClient(MONGODB_URI)
+    db = client.get_default_database()
+    data = {'artist': {}, 'song': {}}
+    data['artist']['id'] = ''
+    data['artist']['name'] = 'Some Artist'
+    data['song']['id'] = ''
+    data['song']['name'] = 'Some Song Name'
+    data['song']['albumName'] = 'Some Album Name'
+    data['startTime'] = '2016-06-29T16:06:23.016Z'
+    db.nowplaying.insert_one(data)
+

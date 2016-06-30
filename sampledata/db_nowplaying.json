@@ -1,0 +1,13 @@
+{
+  "_id": "5773f252e63c1c0e514bb979",
+  "artist": {
+    "id": "",
+    "name": "Some Artist"
+  },
+  "song": {
+    "albumName": "Some Album Name",
+    "id": "",
+    "name": "Some Song Name"
+  },
+  "startTime": "2016-06-29T16:06:23.016Z"
+}
