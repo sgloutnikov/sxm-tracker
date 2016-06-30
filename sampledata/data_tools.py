@@ -1,5 +1,7 @@
 import json
 from pymongo import MongoClient
+from api import api_manager
+from db import db_manager
 
 '''Tools script for one time usage/cases'''
 
@@ -45,7 +47,15 @@ def writeArtistSongFile():
 
 
 def backFillSampleData():
-    pass
+    file = open(FILE_NAME + '_array')
+    jsondata = json.load(file)
+    file.close()
+    for line in jsondata:
+        if line['channelMetadataResponse']['messages']['code'] != 305:
+            current = api_manager.extract_now_playing_data(line)
+            last = db_manager.get_last_streamed()
+            if current['artist'] != last['artist'] and current['song'] != last['song']:
+                db_manager.save_new(current)
 
 
 def insertDummyRecord():
@@ -61,4 +71,5 @@ def insertDummyRecord():
     db.nowplaying.insert_one(data)
 
 
-insertDummyRecord()
+#insertDummyRecord()
+#backFillSampleData()

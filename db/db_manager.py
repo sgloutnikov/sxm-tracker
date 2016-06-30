@@ -16,7 +16,9 @@ def save_full_sample_data(data):
 
 
 def save_new(songdata):
-    logging.info('Saving: ' + songdata['artist'] + " - " + songdata['song'])
+    artist = str(songdata['artist'])
+    song = str(songdata['song'])
+    logging.info('Saving: ' + artist + " - " + song)
     db.nowplaying.insert_one(songdata)
 
 
