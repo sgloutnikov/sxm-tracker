@@ -16,7 +16,7 @@ def save_full_sample_data(data):
 
 
 def save_new(songdata):
-    logging.info('Saving: ' + songdata['artist']['name'] + " - " + songdata['song']['name'])
+    logging.info('Saving: ' + songdata['artist'] + " - " + songdata['song'])
     db.nowplaying.insert_one(songdata)
 
 
@@ -32,15 +32,16 @@ def check_init_db():
             insert_nowplaying_dummy()
     else:
         insert_nowplaying_dummy()
+    # TODO: Indices
 
 
 def insert_nowplaying_dummy():
     # Insert dummy record
-    data = {'artist': {}, 'song': {}}
-    data['artist']['id'] = ''
-    data['artist']['name'] = 'Some Artist'
-    data['song']['id'] = ''
-    data['song']['name'] = 'Some Song Name'
-    data['song']['albumName'] = 'Some Album Name'
+    data = {}
+    data['artist_id'] = ''
+    data['artist'] = 'Some Artist'
+    data['song_id'] = ''
+    data['song'] = 'Some Song Name'
+    data['album'] = 'Some Album Name'
     data['startTime'] = '2016-06-29T16:06:23.016Z'
     db.nowplaying.insert_one(data)

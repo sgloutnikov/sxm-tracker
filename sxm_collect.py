@@ -19,7 +19,7 @@ def collect_now_playing():
     if fulljson['channelMetadataResponse']['messages']['code'] != 305:
         current = api_manager.extract_now_playing_data(fulljson)
         last = db_manager.get_last_streamed()
-        if current['artist']['name'] != last['artist']['name'] and current['song']['name'] != last['song']['name']:
+        if current['artist'] != last['artist'] and current['song'] != last['song']:
             db_manager.save_new(current)
     else:
         logging.error("Error from API call. " + fulljson['channelMetadataResponse']['messages']['code'] +

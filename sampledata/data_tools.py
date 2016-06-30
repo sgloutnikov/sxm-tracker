@@ -51,12 +51,14 @@ def backFillSampleData():
 def insertDummyRecord():
     client = MongoClient(MONGODB_URI)
     db = client.get_default_database()
-    data = {'artist': {}, 'song': {}}
-    data['artist']['id'] = ''
-    data['artist']['name'] = 'Some Artist'
-    data['song']['id'] = ''
-    data['song']['name'] = 'Some Song Name'
-    data['song']['albumName'] = 'Some Album Name'
+    data = {}
+    data['artist_id'] = ''
+    data['artist'] = 'Some Artist'
+    data['song_id'] = ''
+    data['song'] = 'Some Song Name'
+    data['album'] = 'Some Album Name'
     data['startTime'] = '2016-06-29T16:06:23.016Z'
     db.nowplaying.insert_one(data)
 
+
+insertDummyRecord()

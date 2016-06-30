@@ -17,11 +17,11 @@ def get_now_playing_data():
 
 
 def extract_now_playing_data(full_json):
-    data = {'artist': {}, 'song': {}}
-    data['artist']['id'] = full_json['channelMetadataResponse']['metaData']['currentEvent']['artists']['id']
-    data['artist']['name'] = full_json['channelMetadataResponse']['metaData']['currentEvent']['artists']['name']
-    data['song']['id'] = full_json['channelMetadataResponse']['metaData']['currentEvent']['song']['id']
-    data['song']['name'] = full_json['channelMetadataResponse']['metaData']['currentEvent']['song']['name']
-    data['song']['albumName'] = full_json['channelMetadataResponse']['metaData']['currentEvent']['song']['album']['name']
+    data = {}
+    data['artist_id'] = full_json['channelMetadataResponse']['metaData']['currentEvent']['artists']['id']
+    data['artist'] = full_json['channelMetadataResponse']['metaData']['currentEvent']['artists']['name']
+    data['song_id'] = full_json['channelMetadataResponse']['metaData']['currentEvent']['song']['id']
+    data['song'] = full_json['channelMetadataResponse']['metaData']['currentEvent']['song']['name']
+    data['album'] = full_json['channelMetadataResponse']['metaData']['currentEvent']['song']['album']['name']
     data['startTime'] = full_json['channelMetadataResponse']['metaData']['currentEvent']['startTime']
     return data
