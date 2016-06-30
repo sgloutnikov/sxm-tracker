@@ -9,6 +9,6 @@
     "albumImage": "cdn.spotify.com/...jpg"
   },
   "firstHeard": "2016-06-28T17:48:24.199Z",
-  "artists": "Artist Names",
+  "artist": "Artist Names",
   "song": "Song Name"
 }
