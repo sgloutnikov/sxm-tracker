@@ -22,8 +22,9 @@ def collect_now_playing():
         if current['artist'] != last['artist'] and current['song'] != last['song']:
             db_manager.save_new(current)
     else:
-        logging.error("Error from API call. " + fulljson['channelMetadataResponse']['messages']['code'] +
-                      " " + fulljson['channelMetadataResponse']['messages']['message'])
+        code = str(fulljson['channelMetadataResponse']['messages']['code'])
+        message = str(fulljson['channelMetadataResponse']['messages']['message'])
+        logging.error("Error from API call. " + code + " " + message)
 
 if __name__ == "__main__":
     logger.info("Starting Now Playing Collection")

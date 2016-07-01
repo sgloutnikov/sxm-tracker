@@ -1,4 +1,5 @@
 import json
+import os
 from pymongo import MongoClient
 from api import api_manager
 from db import db_manager
@@ -6,7 +7,7 @@ from db import db_manager
 '''Tools script for one time usage/cases'''
 
 FILE_NAME = 'full_sample_data.json'
-MONGODB_URI = 'mongodb://localhost:27017/sxm'
+MONGODB_URI = os.environ.get('MONGODB_URI')
 
 
 # Transform dumped data to JSON array
@@ -71,5 +72,3 @@ def insertDummyRecord():
     db.nowplaying.insert_one(data)
 
 
-#insertDummyRecord()
-#backFillSampleData()
