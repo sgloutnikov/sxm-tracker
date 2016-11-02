@@ -18,6 +18,8 @@ def save_full_sample_data(data):
 def save_new(songdata):
     artist = str(songdata['artist'])
     song = str(songdata['song'])
+    song_id = str(songdata['song_id'])
+    # TODO: Check if bad song from configured strings
     logging.info('Saving: ' + artist + " - " + song)
     db.nowplaying.insert_one(songdata)
 
@@ -25,6 +27,11 @@ def save_new(songdata):
 def get_last_streamed():
     last = db.nowplaying.find({}).sort("_id", direction=DESCENDING).limit(1).next()
     return last
+
+
+# TODO Check if song passes bad data filters
+def is_clean(artist, song, song_id):
+    return
 
 
 def check_init_db():
