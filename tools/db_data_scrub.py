@@ -32,5 +32,5 @@ with open('filter_lists/bad_song.txt', 'r') as f:
         print("Deleted: " + str(result.deleted_count))
 
 
-print("Total Records Deleted: " + str(total))
 print("--- Finished Manual DB Clean ---")
+print("Total Records Deleted: " + str(total))
