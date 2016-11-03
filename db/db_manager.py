@@ -1,5 +1,6 @@
 import logging
 import os
+import re
 from pymongo import MongoClient
 from pymongo import DESCENDING
 
@@ -18,10 +19,12 @@ def save_full_sample_data(data):
 def save_new(songdata):
     artist = str(songdata['artist'])
     song = str(songdata['song'])
-    song_id = str(songdata['song_id'])
-    # TODO: Check if bad song from configured strings
-    logging.info('Saving: ' + artist + " - " + song)
-    db.nowplaying.insert_one(songdata)
+    # Check if new song should be saved
+    if is_clean(artist, song):
+        logging.info('++ Saving: ' + artist + " - " + song)
+        db.nowplaying.insert_one(songdata)
+    else:
+        logging.info('-- Skipping: ' + artist + " - " + song)
 
 
 def get_last_streamed():
@@ -29,9 +32,25 @@ def get_last_streamed():
     return last
 
 
-# TODO Check if song passes bad data filters
-def is_clean(artist, song, song_id):
-    return
+def is_clean(artist, song):
+    # Artist Check
+    with open('tools/filter_lists/bad_artist.txt', 'r') as f:
+        for line in f:
+            pattrn = str(line).strip()
+            REGEX = re.compile(pattrn, re.IGNORECASE)
+            if REGEX.search(artist):
+                logging.info("Dirty Artist Filter Matched! " + artist + " - " + song + " -> " + pattrn)
+                return False
+    # Song Check
+    with open('tools/filter_lists/bad_song.txt', 'r') as f:
+        for line in f:
+            pattrn = str(line).strip()
+            REGEX = re.compile(pattrn, re.IGNORECASE)
+            if REGEX.search(song):
+                logging.info("Dirty Song Filter Matched! " + artist + " - " + song + " -> " + pattrn)
+                return False
+    # Passed Filters
+    return True
 
 
 def check_init_db():
