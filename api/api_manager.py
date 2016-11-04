@@ -25,6 +25,13 @@ def extract_now_playing_data(full_json):
     data['song'] = full_json['channelMetadataResponse']['metaData']['currentEvent']['song']['name']
     data['album'] = full_json['channelMetadataResponse']['metaData']['currentEvent']['song']['album']['name']
     data['startTime'] = full_json['channelMetadataResponse']['metaData']['currentEvent']['startTime']
+    data['spotify'] = {}
+    data['spotify']['artist'] = ''
+    data['spotify']['song'] = ''
+    data['spotify']['url'] = ''
+    data['spotify']['uri'] = ''
+    data['spotify']['album'] = ''
+    data['spotify']['album_image'] = ''
     return data
 
 
@@ -47,7 +54,6 @@ def get_spotify(song_json):
     if results['tracks']['total'] > 0:
         logging.info("Adding Spotify: " + song_json['artist'] + " - " + song_json['song'])
         spotify_track = results['tracks']['items'][0]
-        song_json['spotify'] = {}
 
         # Artist
         delim = ''

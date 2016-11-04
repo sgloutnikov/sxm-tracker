@@ -21,8 +21,8 @@ def collect_now_playing():
         last = db_manager.get_last_streamed()
         if current['artist'] != last['artist'] and current['song'] != last['song']:
             if db_manager.is_clean(current['artist'], current['song']):
-                current = api_manager.get_spotify(current)
-                db_manager.save_new(current)
+                current_spotify = api_manager.get_spotify(current)
+                db_manager.save_new(current_spotify)
             else:
                 logging.info('-- Skipping: ' + current['artist'] + " - " + current['song'])
     else:
@@ -37,6 +37,6 @@ if __name__ == "__main__":
 
     # TODO: When in django, probably will have to move to BackgroundScheduler
     scheduler = BlockingScheduler()
-    scheduler.add_job(collect_now_playing, 'interval', seconds=45)
+    scheduler.add_job(collect_now_playing, 'interval', seconds=15)
     scheduler.start()
 
