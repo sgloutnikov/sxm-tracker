@@ -8,6 +8,8 @@ logger = logging.getLogger(__name__)
 
 baseurl = 'https://www.siriusxm.com/metadata/pdt/en-us/json/channels/hotjamz/timestamp/'
 
+spotify_api = spotipy.Spotify()
+
 
 def get_now_playing_data():
     timenow = (datetime.utcnow() - timedelta(minutes=1)).strftime('%m-%d-%H:%M:00')
@@ -36,8 +38,6 @@ def extract_now_playing_data(full_json):
 
 
 def get_spotify(song_json):
-    spotify_api = spotipy.Spotify()
-
     # Check if multiple artists, if more than 2 use first 2 to prevent trimmed artist names in search
     artist_list = song_json['artist'].split('/')
     if len(artist_list) > 2:
@@ -46,7 +46,7 @@ def get_spotify(song_json):
         srch_artist = song_json['artist']
     # Clean search string. Remove (xx) year tags.
     srch_song = song_json['song']
-    srch_song = re.sub(r'\s\(\d\d\)', '', srch_song)
+    srch_song = re.sub(r'\s\(\d\d\)', '', str(srch_song))
 
     # Search Spotify
     results = spotify_api.search(q='artist:' + srch_artist + ' track:' + srch_song, limit=1, type='track')
