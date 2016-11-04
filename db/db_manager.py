@@ -20,8 +20,8 @@ def save_new(songdata):
     artist = str(songdata['artist'])
     song = str(songdata['song'])
     logging.info('++ Saving: ' + artist + " - " + song)
-    db.nowplaying.insert_one(songdata)
-
+    db_result = db.nowplaying.insert_one(songdata)
+    logging.info('Saved: ' + db_result)
 
 def get_last_streamed():
     last = db.nowplaying.find({}).sort("_id", direction=DESCENDING).limit(1).next()
@@ -68,4 +68,11 @@ def insert_nowplaying_dummy():
     data['song'] = 'Some Song Name'
     data['album'] = 'Some Album Name'
     data['startTime'] = '2016-06-29T16:06:23.016Z'
+    data['spotify'] = {}
+    data['spotify']['artist'] = ''
+    data['spotify']['song'] = ''
+    data['spotify']['url'] = ''
+    data['spotify']['uri'] = ''
+    data['spotify']['album'] = ''
+    data['spotify']['album_image'] = ''
     db.nowplaying.insert_one(data)

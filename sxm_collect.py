@@ -37,6 +37,6 @@ if __name__ == "__main__":
 
     # TODO: When in django, probably will have to move to BackgroundScheduler
     scheduler = BlockingScheduler()
-    scheduler.add_job(collect_now_playing, 'interval', seconds=15)
+    scheduler.add_job(collect_now_playing, 'interval', seconds=45)
     scheduler.start()
 
