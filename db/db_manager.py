@@ -21,7 +21,7 @@ def save_new(songdata):
     song = str(songdata['song'])
     logging.info('++ Saving: ' + artist + " - " + song)
     db_result = db.nowplaying.insert_one(songdata)
-    logging.info('Saved: ' + str(db_result))
+    logging.info('Saved _id: ' + str(db_result.inserted_id) + " acknowledged: " + str(db_result.acknowledged))
 
 def get_last_streamed():
     last = db.nowplaying.find({}).sort("_id", direction=DESCENDING).limit(1).next()
