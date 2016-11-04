@@ -19,12 +19,8 @@ def save_full_sample_data(data):
 def save_new(songdata):
     artist = str(songdata['artist'])
     song = str(songdata['song'])
-    # Check if new song should be saved
-    if is_clean(artist, song):
-        logging.info('++ Saving: ' + artist + " - " + song)
-        db.nowplaying.insert_one(songdata)
-    else:
-        logging.info('-- Skipping: ' + artist + " - " + song)
+    logging.info('++ Saving: ' + artist + " - " + song)
+    db.nowplaying.insert_one(songdata)
 
 
 def get_last_streamed():

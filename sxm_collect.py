@@ -20,7 +20,11 @@ def collect_now_playing():
         current = api_manager.extract_now_playing_data(fulljson)
         last = db_manager.get_last_streamed()
         if current['artist'] != last['artist'] and current['song'] != last['song']:
-            db_manager.save_new(current)
+            if db_manager.is_clean(current['artist'], current['song']):
+                current = api_manager.get_spotify(current)
+                db_manager.save_new(current)
+            else:
+                logging.info('-- Skipping: ' + current['artist'] + " - " + current['song'])
     else:
         code = str(fulljson['channelMetadataResponse']['messages']['code'])
         message = str(fulljson['channelMetadataResponse']['messages']['message'])
