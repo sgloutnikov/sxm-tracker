@@ -52,7 +52,7 @@ def get_spotify(song_json):
     results = spotify_api.search(q='artist:' + srch_artist + ' track:' + srch_song, limit=1, type='track')
     # If found add it
     if results['tracks']['total'] > 0:
-        logging.info("Adding Spotify: " + song_json['artist'] + " - " + song_json['song'])
+        logging.info("Adding Spotify: " + str(song_json['artist']) + " - " + str(song_json['song']))
         spotify_track = results['tracks']['items'][0]
 
         # Artist
@@ -76,6 +76,6 @@ def get_spotify(song_json):
 
         return song_json
     else:
-        logging.info("No Spotify Found: " + srch_artist + "(" + song_json['artist'] + ") - " +
-                     srch_song + "(" + song_json['song'] + ")")
+        logging.info("No Spotify Found: " + srch_artist + "(" + str(song_json['artist']) + ") - " +
+                     srch_song + "(" + str(song_json['song']) + ")")
         return song_json
