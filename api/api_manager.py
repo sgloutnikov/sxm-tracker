@@ -1,8 +1,10 @@
 import logging
 from datetime import datetime, timedelta
 import requests
+import requests.exceptions
 import spotipy
 import re
+import time
 
 logger = logging.getLogger(__name__)
 
@@ -39,17 +41,26 @@ def extract_now_playing_data(full_json):
 
 def get_spotify(song_json):
     # Check if multiple artists, if more than 2 use first 2 to prevent trimmed artist names in search
-    artist_list = song_json['artist'].split('/')
+    artist = str(song_json['artist'])
+    artist_list = artist.split('/')
     if len(artist_list) > 2:
         srch_artist = artist_list[0] + " " + artist_list[1]
     else:
-        srch_artist = song_json['artist']
+        srch_artist = artist
     # Clean search string. Remove (xx) year tags.
     srch_song = song_json['song']
     srch_song = re.sub(r'\s\(\d\d\)', '', str(srch_song))
 
-    # Search Spotify
-    results = spotify_api.search(q='artist:' + srch_artist + ' track:' + srch_song, limit=1, type='track')
+    # Search Spotify (requests has been flaky in my tests, retry if failed)
+    for i in range(0, 3):
+        try:
+            results = spotify_api.search(q='artist:' + srch_artist + ' track:' + srch_song, limit=1, type='track')
+        except:
+            logging.error("There was an error reaching Spotify WEB API. Retrying: " + str(i + 1))
+            time.sleep(5)
+            continue
+        break
+
     # If found add it
     if results['tracks']['total'] > 0:
         logging.info("Adding Spotify: " + str(song_json['artist']) + " - " + str(song_json['song']))
@@ -72,10 +83,11 @@ def get_spotify(song_json):
         # Album
         song_json['spotify']['album'] = spotify_track['album']['name']
         # Album Image
-        song_json['spotify']['album_image'] = spotify_track['album']['images'][0]['url']
+        if len(spotify_track['album']['images']) > 0:
+            song_json['spotify']['album_image'] = spotify_track['album']['images'][0]['url']
 
         return song_json
     else:
-        logging.info("No Spotify Found: " + srch_artist + "(" + str(song_json['artist']) + ") - " +
-                     srch_song + "(" + str(song_json['song']) + ")")
+        logging.info("No Spotify Found: " + srch_artist + " (" + str(song_json['artist']) + ") - " +
+                     srch_song + " (" + str(song_json['song']) + ")")
         return song_json
