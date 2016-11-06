@@ -28,6 +28,7 @@ def get_last_streamed():
     return last
 
 
+#TODO: Load in memory... Original thought was to be able to change filters in live app without restarting.
 def is_clean(artist, song):
     # Artist Check
     with open('tools/filter_lists/bad_artist.txt', 'r') as f:

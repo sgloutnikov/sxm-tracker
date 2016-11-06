@@ -40,6 +40,7 @@ def extract_now_playing_data(full_json):
 
 
 def get_spotify(song_json):
+    #TODO: Move this logic to a new 'clean' package classes. Added Github Issue.
     # Check if multiple artists, if more than 2 use first 2 to prevent trimmed artist names in search
     artist = str(song_json['artist'])
     artist_list = artist.split('/')
