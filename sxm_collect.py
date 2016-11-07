@@ -21,8 +21,8 @@ def collect_now_playing():
         last = db_manager.get_last_streamed()
         if current['artist'] != last['artist'] and current['song'] != last['song']:
             if db_manager.is_clean(current['artist'], current['song']):
-                current_spotify = api_manager.get_spotify(current)
-                db_manager.save_new(current_spotify)
+                current = api_manager.get_spotify(current)
+                db_manager.save_new(current)
             else:
                 logging.info('-- Skipping: ' + current['artist'] + " - " + current['song'])
     else:
