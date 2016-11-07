@@ -1,0 +1,6 @@
+# REGEX song string matched on left will be replaced with string on the right. Comma separated list.
+Timmy Turner,Tiimmy Turner
+\(BED\) XMRCHR - ,
+F\*ckin,F**kin
+We Be Burning,We Be Burnin
+\(Clean\),

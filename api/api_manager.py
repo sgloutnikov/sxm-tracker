@@ -40,31 +40,33 @@ def extract_now_playing_data(full_json):
 
 
 def get_spotify(song_json):
-    #TODO: Move this logic to a new 'clean' package classes. Added Github Issue.
-    # Check if multiple artists, if more than 2 use first 2 to prevent trimmed artist names in search
+    # Check if multiple artists, use first to improve search results
     artist = str(song_json['artist'])
     artist_list = artist.split('/')
-    if len(artist_list) > 2:
-        srch_artist = artist_list[0] + " " + artist_list[1]
+    if len(artist_list) > 1:
+        srch_artist = artist_list[0]
     else:
         srch_artist = artist
-    # Clean search string. Remove (xx) year tags.
     srch_song = song_json['song']
-    srch_song = re.sub(r'\s\(\d\d\)', '', str(srch_song))
+
+    # Escape Special Characters
+    srch_artist = re.escape(srch_artist)
+    srch_song = re.escape(srch_song)
+    print(srch_artist)
 
     # Search Spotify (requests has been flaky in my tests, retry if failed)
     for i in range(0, 3):
         try:
             results = spotify_api.search(q='artist:' + srch_artist + ' track:' + srch_song, limit=1, type='track')
         except:
-            logging.error("There was an error reaching Spotify WEB API. Retrying: " + str(i + 1))
+            logger.error("There was an error reaching Spotify WEB API. Retrying: " + str(i + 1))
             time.sleep(5)
             continue
         break
 
     # If found add it
     if results['tracks']['total'] > 0:
-        logging.info("Adding Spotify: " + str(song_json['artist']) + " - " + str(song_json['song']))
+        logger.info("Adding Spotify: " + str(song_json['artist']) + " - " + str(song_json['song']))
         spotify_track = results['tracks']['items'][0]
 
         # Artist
@@ -89,6 +91,6 @@ def get_spotify(song_json):
 
         return song_json
     else:
-        logging.info("No Spotify Found: " + srch_artist + " (" + str(song_json['artist']) + ") - " +
+        logger.info("No Spotify Found: " + srch_artist + " (" + str(song_json['artist']) + ") - " +
                      srch_song + " (" + str(song_json['song']) + ")")
         return song_json

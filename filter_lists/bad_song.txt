@@ -1,3 +1,4 @@
+# List of Bad Songs. Anything matched here is ignored.
 siriusxm
 The Heat
 NEW!

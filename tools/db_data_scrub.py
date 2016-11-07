@@ -2,13 +2,15 @@
 
 from db import db_manager
 import re
+import os
 
 total = 0
 print("--- Starting Manual DB Clean ---")
 
 # Artist
 print("--- Artist ---")
-with open('filter_lists/bad_artist.txt', 'r') as f:
+fpath = os.path.join(os.path.dirname(__file__), '../filter_lists/bad_artist.txt')
+with open(fpath, 'r') as f:
     for line in f:
         pattrn = str(line).strip()
         print("Checking: " + pattrn)
@@ -21,7 +23,8 @@ with open('filter_lists/bad_artist.txt', 'r') as f:
 
 # Song
 print("--- Song ---")
-with open('filter_lists/bad_song.txt', 'r') as f:
+fpath = os.path.join(os.path.dirname(__file__), '../filter_lists/bad_song.txt')
+with open(fpath, 'r') as f:
     for line in f:
         pattrn = str(line).strip()
         print("Checking: " + pattrn)

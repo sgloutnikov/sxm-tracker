@@ -19,38 +19,18 @@ def save_full_sample_data(data):
 def save_new(songdata):
     artist = str(songdata['artist'])
     song = str(songdata['song'])
-    logging.info('++ Saving: ' + artist + " - " + song)
+    logger.info('++ Saving: ' + artist + " - " + song)
     db_result = db.nowplaying.insert_one(songdata)
-    logging.info('Saved _id: ' + str(db_result.inserted_id) + " acknowledged: " + str(db_result.acknowledged))
+    logger.info('Saved _id: ' + str(db_result.inserted_id) + " acknowledged: " + str(db_result.acknowledged))
+
 
 def get_last_streamed():
     last = db.nowplaying.find({}).sort("_id", direction=DESCENDING).limit(1).next()
     return last
 
 
-#TODO: Load in memory... Original thought was to be able to change filters in live app without restarting.
-def is_clean(artist, song):
-    # Artist Check
-    with open('tools/filter_lists/bad_artist.txt', 'r') as f:
-        for line in f:
-            pattrn = str(line).strip()
-            REGEX = re.compile(pattrn, re.IGNORECASE)
-            if REGEX.search(artist):
-                logging.info("Dirty Artist Filter Matched! " + artist + " - " + song + " -> " + pattrn)
-                return False
-    # Song Check
-    with open('tools/filter_lists/bad_song.txt', 'r') as f:
-        for line in f:
-            pattrn = str(line).strip()
-            REGEX = re.compile(pattrn, re.IGNORECASE)
-            if REGEX.search(song):
-                logging.info("Dirty Song Filter Matched! " + artist + " - " + song + " -> " + pattrn)
-                return False
-    # Passed Filters
-    return True
-
-
 def check_init_db():
+    logger.info("Checking Database")
     if 'nowplaying' in db.collection_names():
         stats = db.command("collstats", "nowplaying")
         if stats['count'] == 0:
