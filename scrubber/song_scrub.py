@@ -45,5 +45,5 @@ def init():
     fpath = os.path.join(os.path.dirname(__file__), '../filter_lists/edit_replace_song.txt')
     with open(fpath, 'r') as f:
         for line in filterfalse(__is_comment, f):
-            line_list = str(line).split(',')
-            replace_song_dict[str(line_list[0])] = str(line_list[1])
+            line_list = str(line).rsplit(',', 1)
+            replace_song_dict[str(line_list[0])] = str(line_list[1].strip())
