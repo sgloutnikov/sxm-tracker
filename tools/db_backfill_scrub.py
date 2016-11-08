@@ -19,7 +19,7 @@ db = client.get_default_database()
 scrub_manager.init()
 
 #songs = db.nowplaying.find({'song': {"$regex": 'Break Up'}}).sort("startTime", direction=ASCENDING)
-songs = db.nowplaying.find({'artist': 'Yung Joc'}).sort("startTime", direction=ASCENDING)
+songs = db.nowplaying.find({"song": "Bust It Baby"}).sort("startTime", direction=ASCENDING)
 
 counter = 0
 for song in songs:
@@ -34,4 +34,4 @@ for song in songs:
     print(song)
     db.nowplaying.replace_one({'_id': ObjectId(song_id)}, song)
     counter += 1
-    time.sleep(0.2)
+    time.sleep(0.5)

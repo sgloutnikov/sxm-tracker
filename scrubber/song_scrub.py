@@ -12,7 +12,8 @@ def replace_definitions(song_json):
     song = str(song_json['song'])
     for song_match, song_replace in replace_song_dict.items():
         pattern = re.compile(song_match)
-        song = re.sub(pattern, str(song_replace), song).strip()
+        if re.search(pattern, song):
+            song = re.sub(pattern, str(song_replace), song).strip()
     song_json['song'] = song
     return song_json
 

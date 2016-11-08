@@ -13,7 +13,8 @@ def replace_definitions(song_json):
     artist = str(song_json['artist'])
     for artist_match, artist_replace in replace_artist_dict.items():
         pattern = re.compile(artist_match)
-        artist = re.sub(pattern, str(artist_replace), artist).strip()
+        if re.search(pattern, artist):
+            artist = re.sub(pattern, str(artist_replace), artist).strip()
     song_json['artist'] = artist
     return song_json
 

@@ -17,9 +17,9 @@ def scrub_artist(song_json):
 
 
 def scrub_song(song_json):
+    song_json = song_scrub.replace_definitions(song_json)
     song_json = song_scrub.strip_year_tag(song_json)
     song_json = song_scrub.length_verification(song_json)
-    song_json = song_scrub.replace_definitions(song_json)
     return song_json
 
 
@@ -27,13 +27,13 @@ def is_clean(artist, song):
     # Artist Check
     for artist_filter in bad_artists:
         REGEX = re.compile(artist_filter, re.IGNORECASE)
-        if REGEX.search(artist):
+        if REGEX.search(str(artist)):
             logger.info("Dirty Artist Filter Matched! " + artist + " - " + song + " -> " + artist_filter)
             return False
     # Song Check
     for song_filter in bad_songs:
         REGEX = re.compile(song_filter, re.IGNORECASE)
-        if REGEX.search(song):
+        if REGEX.search(str(song)):
             logger.info("Dirty Song Filter Matched! " + artist + " - " + song + " -> " + song_filter)
             return False
 

@@ -21,6 +21,7 @@ def collect_now_playing():
         current = api_manager.extract_now_playing_data(fulljson)
         last = db_manager.get_last_streamed()
         if current['artist'] != last['artist'] and current['song'] != last['song']:
+            logger.info("New Song Detected. " + str(current['artist']) + " - " + current['song'])
             if scrub_manager.is_clean(current['artist'], current['song']):
                 current = scrub_manager.scrub_artist(current)
                 current = scrub_manager.scrub_song(current)

@@ -49,7 +49,9 @@ def get_spotify(song_json):
         srch_artist = artist
     srch_song = song_json['song']
 
-    # TODO: Escape Special Characters, don't over escape
+    # Escape some troublesome characters, but don't over-escape and miss searches
+    if re.search(r'[*]', srch_song):
+        srch_song = re.escape(srch_song)
 
     # Search Spotify (requests has been flaky in my tests, retry if failed)
     for i in range(0, 3):
