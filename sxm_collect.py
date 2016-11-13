@@ -19,7 +19,11 @@ def collect_now_playing():
     if fulljson['channelMetadataResponse']['messages']['code'] != 305:
         current = api_manager.extract_now_playing_data(fulljson)
         last = db_manager.get_last_streamed()
-        if current['artist'] != last['artist'] and current['song'] != last['song']:
+        current_artist = str(current['artist'])
+        current_song = str(current['song'])
+        last_artist = str(last['artist'])
+        last_song = str(last['song'])
+        if (current_artist != last_artist) and (current_song != last_song):
             logger.info("New Song Detected. " + str(current['artist']) + " - " + str(current['song']))
             if scrub_manager.is_clean(current['artist'], current['song']):
                 current = scrub_manager.scrub_artist(current)

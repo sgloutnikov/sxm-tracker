@@ -25,7 +25,7 @@ def save_new(songdata):
 
 
 def get_last_streamed():
-    last = db.nowplaying.find({}).sort("_id", direction=DESCENDING).limit(1).next()
+    last = db.nowplaying.find({}).sort("startTime", direction=DESCENDING).limit(1).next()
     return last
 
 
@@ -40,8 +40,7 @@ def check_init_db():
         insert_nowplaying_dummy()
     # Indices
     logger.info("Checking Indices")
-    #db.nowplaying.create_index([('startTime', DESCENDING)], unique=True, background=True)
-    db.nowplaying.create_index([('startTime', DESCENDING)], background=True)
+    db.nowplaying.create_index([('startTime', DESCENDING)], unique=True, background=True)
 
 
 def insert_nowplaying_dummy():
