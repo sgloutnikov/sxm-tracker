@@ -1,8 +1,7 @@
 import logging
 import os
-import re
-from pymongo import MongoClient
-from pymongo import DESCENDING
+from pymongo import MongoClient, DESCENDING
+from pymongo.errors import DuplicateKeyError
 
 logger = logging.getLogger(__name__)
 
@@ -20,8 +19,11 @@ def save_new(songdata):
     artist = str(songdata['artist'])
     song = str(songdata['song'])
     logger.info('++ Saving: ' + artist + " - " + song)
-    db_result = db.nowplaying.insert_one(songdata)
-    logger.info('Saved _id: ' + str(db_result.inserted_id) + " acknowledged: " + str(db_result.acknowledged))
+    try:
+        db_result = db.nowplaying.insert_one(songdata)
+        logger.info('Saved _id: ' + str(db_result.inserted_id) + " acknowledged: " + str(db_result.acknowledged))
+    except DuplicateKeyError:
+        logger.fatal("Duplicate Key Error. This should never happen, and is last resort data check from the db.")
 
 
 def get_last_streamed():
