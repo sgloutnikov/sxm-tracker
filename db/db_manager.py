@@ -40,7 +40,7 @@ def check_init_db():
         insert_nowplaying_dummy()
     # Indices
     logger.info("Checking Indices")
-    db.nowplaying.create_index([('startTime', DESCENDING)], background=True)
+    db.nowplaying.create_index([('startTime', DESCENDING)], unique=True, background=True)
 
 
 def insert_nowplaying_dummy():
