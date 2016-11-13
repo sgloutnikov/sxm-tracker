@@ -36,8 +36,11 @@ def check_init_db():
         if stats['count'] == 0:
             insert_nowplaying_dummy()
     else:
+        logger.info("Must be the first run. Creating Collection")
         insert_nowplaying_dummy()
-    # TODO: Indices
+    # Indices
+    logger.info("Checking Indices")
+    db.nowplaying.create_index([('startTime', DESCENDING)], background=True)
 
 
 def insert_nowplaying_dummy():

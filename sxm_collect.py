@@ -15,7 +15,6 @@ def collect_full_sample_data():
 
 
 def collect_now_playing():
-    # TODO: Look into Redis Queue (http://python-rq.org)
     fulljson = api_manager.get_now_playing_data()
     if fulljson['channelMetadataResponse']['messages']['code'] != 305:
         current = api_manager.extract_now_playing_data(fulljson)
