@@ -2,8 +2,8 @@ import logging
 import re
 from itertools import filterfalse
 import os
-from scrubber import artist_scrub
-from scrubber import song_scrub
+from . import artist_scrub
+from . import song_scrub
 
 logger = logging.getLogger(__name__)
 

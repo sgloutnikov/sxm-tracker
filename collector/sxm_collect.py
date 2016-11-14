@@ -1,11 +1,13 @@
 from apscheduler.schedulers.blocking import BlockingScheduler
 import logging.config
-from db import db_manager
-from api import api_manager
-from scrubber import scrub_manager
+import os
+from collector.db import db_manager
+from collector.api import api_manager
+from collector.scrubber import scrub_manager
 
 
-logging.config.fileConfig('logging_config.ini', disable_existing_loggers=False)
+log_config = fpath = os.path.join(os.path.dirname(__file__), 'logging_config.ini')
+logging.config.fileConfig(log_config, disable_existing_loggers=False)
 logger = logging.getLogger(__name__)
 
 
