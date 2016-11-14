@@ -2,6 +2,7 @@ import logging
 import os
 from pymongo import MongoClient, DESCENDING
 from pymongo.errors import DuplicateKeyError
+from dateutil import parser
 
 logger = logging.getLogger(__name__)
 
@@ -18,6 +19,9 @@ def save_full_sample_data(data):
 def save_new(songdata):
     artist = str(songdata['artist'])
     song = str(songdata['song'])
+    # Ensure readable timestamp
+    songts = songdata['startTime']
+    songdata['startTime'] = parser.parse(songts)
     logger.info('++ Saving: ' + artist + " - " + song)
     try:
         db_result = db.nowplaying.insert_one(songdata)
