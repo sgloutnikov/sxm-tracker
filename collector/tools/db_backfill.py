@@ -1,5 +1,5 @@
-from api import api_manager
-from db import db_manager
+from ..api import api_manager
+from ..db import db_manager
 from pymongo import MongoClient
 from pymongo import ASCENDING
 import os

@@ -1,8 +1,7 @@
 # Manually scrub/re-scrub old entries and update them in the db.
 
-from api import api_manager
-from db import db_manager
-from scrubber import scrub_manager
+from ..api import api_manager
+from ..scrubber import scrub_manager
 from pymongo import MongoClient
 from pymongo import ASCENDING
 from bson.objectid import ObjectId

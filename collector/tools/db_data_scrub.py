@@ -1,6 +1,6 @@
 # Clean bad data from db based on pre-configured strings.
 
-from db import db_manager
+from ..db import db_manager
 import re
 import os
 
