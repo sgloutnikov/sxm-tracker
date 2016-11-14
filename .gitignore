@@ -3,3 +3,4 @@
 *.log
 *.pyc
 testor.py
+.DS_Store

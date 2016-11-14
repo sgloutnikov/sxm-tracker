@@ -1,1 +1,2 @@
-clock: python sxm_collect.py
+worker: python collector/sxm_collect.py
+web: gunicorn sxmtracker.wsgi --log-file -
