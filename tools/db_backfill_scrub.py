@@ -1,7 +1,7 @@
 # Manually scrub/re-scrub old entries and update them in the db.
 
-from ..api import api_manager
-from ..scrubber import scrub_manager
+from api import api_manager
+from scrubber import scrub_manager
 from pymongo import MongoClient
 from pymongo import ASCENDING
 from bson.objectid import ObjectId
@@ -18,7 +18,7 @@ db = client.get_default_database()
 scrub_manager.init()
 
 #songs = db.nowplaying.find({'song': {"$regex": 'Break Up'}}).sort("startTime", direction=ASCENDING)
-songs = db.nowplaying.find({"song": "Bust It Baby"}).sort("startTime", direction=ASCENDING)
+songs = db.nowplaying.find({"song": "Unthinkable (I'm Ready)"}).sort("startTime", direction=ASCENDING)
 
 counter = 0
 for song in songs:

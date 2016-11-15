@@ -38,3 +38,18 @@ F\*ckin,F**kin
 ^Halfway \(Remix\)$,Halfway (Lil Wayne)
 ^Love Hate Thing$,LoveHate Thing
 ^Bust It Baby$,Bust it Baby Part 2
+^Nana$,Na Na
+^Unusual \(f\/Drake\)$,Unusual
+^Bottoms Up \(f\/Nicki Minaj\)$,Bottoms Up
+^5 Senses \(remix f\/50 Cent\)$,Waiter/The 5 Senses
+^My Sh\*t$,My Shit
+^3X N A ROW$,3 Times In a Row
+^Ain't Thinkin Bout You \(f\/Chris B$,Ain't Thinkin 'Bout You
+^What's It Gonna Be\?$,What's It Gonna Be
+^Bad B\*tch Alert$,She a Bad One
+^Lady in the Glass Dress$,Lady In a Glass Dress
+^Regret remix \(f\/ Ludacris\)$,Regret
+^All I Want Is You \(f\/ J\. Cole\)$,All I Want Is You
+^Out Of My Head \(f\/Trey Songz\)$,Out Of My Head
+^B\*tch Don't Kill My Vibe \(REMIX\)$,Bitch Don't Kill My Vibe (Remix)
+^Unthinkable \(I'm Ready\)$,Un-thinkable (I'm Ready)

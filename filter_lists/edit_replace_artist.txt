@@ -23,3 +23,15 @@ Jasmine Sullivan,Jazmine Sullivan
 ^Fabolous ft Ne-Yo$,Fabolous
 ^Akon ft Eminem$,Akon
 ^Plies ft Ne-Yo$,Plies
+^50 Cent & The Game$,50 Cent/The Game
+^Ludacris & Bobby V\.$,Ludacris/Bobby V.
+^Terror Squad f\/ Fat Joe & Remy$,Terror Squad/Fat Joe/Remy
+^New Boyz ft\. Ray J$,New Boyz/Ray J
+^Donnie Trumpet & The S\.E\.$,Donnie Trumpet & The Social Experiment
+^TK-N-CASH$,TK N Cash
+^Brandy & Monica$,^Brandy/Monica$
+^iHeart Memphis$,iLoveMemphis
+^Rae Srummerd$,Rae Sremmurd
+^Busta Rhymes f\/ Janet Jackson$,Busta Rhymes/Janet Jackson
+^Anderson\.Paak\/The Game\/Sonyae Elise$,Anderson .Paak/The Game/Sonyae Elise$
+^Victoria Monét$,Victoria Monet
