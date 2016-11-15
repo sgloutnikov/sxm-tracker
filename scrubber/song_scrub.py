@@ -41,10 +41,10 @@ def __is_comment(s):
 
 
 def init():
-    logger.info("Loading Song Replace Dictionary")
     # Load Song Replace Dictionary from File
     fpath = os.path.join(os.path.dirname(__file__), '../filter_lists/edit_replace_song.txt')
     with open(fpath, 'r') as f:
         for line in filterfalse(__is_comment, f):
             line_list = str(line).rsplit(',', 1)
             replace_song_dict[str(line_list[0])] = str(line_list[1].strip())
+    logger.info("Loaded Song Replace Dictionary: " + str(len(replace_song_dict)) + " definitions.")

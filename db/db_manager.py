@@ -25,9 +25,24 @@ def save_new(songdata):
     logger.info('++ Saving: ' + artist + " - " + song)
     try:
         db_result = db.nowplaying.insert_one(songdata)
-        logger.info('Saved _id: ' + str(db_result.inserted_id) + " acknowledged: " + str(db_result.acknowledged))
+        logger.info('Saved to nowplaying. _id: ' + str(db_result.inserted_id) + " acknowledged: " +
+                    str(db_result.acknowledged))
+        save_in_songs(songdata)
     except DuplicateKeyError:
         logger.fatal("Duplicate Key Error. This should never happen, and is last resort data check from the db.")
+
+
+def save_in_songs(songdata):
+    query = {'artist': str(songdata['artist']), 'song': str(songdata['song'])}
+    update = {'$set': {'last_heard': songdata['startTime'], 'spotify': songdata['spotify']},
+              '$inc': {'num_plays': 1},
+              '$setOnInsert': {'artist': songdata['artist'], 'artist_id': songdata['artist_id'],
+                               'song': songdata['song'], 'song_id': songdata['song_id'],
+                               'first_heard': songdata['startTime']}}
+    db_result = db.songs.update_one(query, update, upsert=True)
+    logger.info("Saved to songs. Matched Count: " + str(db_result.matched_count) + " Modified Count: " +
+                str(db_result.modified_count) + " UpsertedID: " + str(db_result.upserted_id))
+
 
 
 def get_last_streamed():
