@@ -18,7 +18,7 @@ db = client.get_default_database()
 scrub_manager.init()
 
 #songs = db.nowplaying.find({'song': {"$regex": 'Break Up'}}).sort("startTime", direction=ASCENDING)
-songs = db.nowplaying.find({"song": "I'm In Love With A Stripper (Rmx)"}).sort("startTime", direction=ASCENDING)
+songs = db.nowplaying.find({"song": "Beautiful (f/Kardinal Offishall"}).sort("startTime", direction=ASCENDING)
 
 counter = 0
 for song in songs:

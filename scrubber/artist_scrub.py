@@ -10,6 +10,7 @@ replace_artist_dict = {}
 
 # Run through replace dictionary, and replace matches
 def replace_definitions(song_json):
+    logger.info("Artist Replace Definitions: " + str(len(replace_artist_dict)))
     artist = str(song_json['artist'])
     for artist_match, artist_replace in replace_artist_dict.items():
         pattern = re.compile(artist_match)

@@ -9,6 +9,7 @@ replace_song_dict = {}
 
 
 def replace_definitions(song_json):
+    logger.info("Song Replace Definitions: " + str(len(replace_song_dict)))
     song = str(song_json['song'])
     for song_match, song_replace in replace_song_dict.items():
         pattern = re.compile(song_match)
