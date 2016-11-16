@@ -1,6 +1,6 @@
 import logging
 import os
-from pymongo import MongoClient, DESCENDING
+from pymongo import MongoClient, DESCENDING, ASCENDING
 from pymongo.errors import DuplicateKeyError
 from dateutil import parser
 
@@ -62,6 +62,8 @@ def check_init_db():
     # Indices
     logger.info("Checking Indices")
     db.nowplaying.create_index([('startTime', DESCENDING)], unique=True, background=True)
+    db.songs.create_index([('artist', ASCENDING)], background=True)
+    db.songs.create_index([('song', ASCENDING)], background=True)
 
 
 def insert_nowplaying_dummy():
