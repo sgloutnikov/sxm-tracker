@@ -35,3 +35,4 @@ Jasmine Sullivan,Jazmine Sullivan
 ^Busta Rhymes f\/ Janet Jackson$,Busta Rhymes/Janet Jackson
 ^Anderson\.Paak\/The Game\/Sonyae Elise$,Anderson .Paak/The Game/Sonyae Elise$
 ^Victoria Monét$,Victoria Monet
+^Eminem ft Rihanna$,Eminem/Rihanna
