@@ -40,6 +40,9 @@ def extract_now_playing_data(full_json):
 
 
 def get_spotify(song_json):
+    # TODO: Look to improve. Temp hack for how to not pull wrong spotify info for Beyonce - Sorry
+    if str(song_json['album']) == 'Lemonade':
+        return song_json
     # Check if multiple artists, use first to improve search results
     artist = str(song_json['artist'])
     artist_list = artist.split('/')
