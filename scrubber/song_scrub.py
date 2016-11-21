@@ -11,11 +11,13 @@ replace_song_dict = {}
 def replace_definitions(song_json):
     logger.info("Song Replace Definitions: " + str(len(replace_song_dict)))
     song = str(song_json['song'])
+    logger.info("Song Before: " + song)
     for song_match, song_replace in replace_song_dict.items():
         pattern = re.compile(song_match)
         if re.search(pattern, song):
             song = re.sub(pattern, str(song_replace), song).strip()
     song_json['song'] = song
+    logger.info(("Song After: " + song))
     return song_json
 
 
