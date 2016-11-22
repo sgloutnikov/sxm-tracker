@@ -44,8 +44,6 @@ if __name__ == "__main__":
     db_manager.check_init_db()
     scrub_manager.init()
 
-    # TODO: When in django, probably will have to move to BackgroundScheduler
     scheduler = BlockingScheduler()
     scheduler.add_job(collect_now_playing, 'interval', seconds=45)
     scheduler.start()
-
