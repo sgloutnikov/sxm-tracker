@@ -19,7 +19,7 @@ def scrub_artist(song_json):
 def scrub_song(song_json):
     song_json = song_scrub.replace_definitions(song_json)
     song_json = song_scrub.strip_year_tag(song_json)
-    song_json = song_scrub.length_verification(song_json)
+    #song_json = song_scrub.length_verification(song_json)
     return song_json
 
 
