@@ -5,22 +5,19 @@ from itertools import filterfalse
 
 logger = logging.getLogger(__name__)
 
+replace_song_dict = {}
 
-# Run through replace definitions, and replace matches. Allow for live definitions changes.
+
+# Run through replace dictionary, and replace matches
 def replace_definitions(song_json):
     song = str(song_json['song'])
     logger.info("Song Before Replace Scrub: " + song)
-    fpath = os.path.join(os.path.dirname(__file__), '../filter_lists/edit_replace_song.txt')
-    with open(fpath, 'r') as f:
-        for line in filterfalse(__is_comment, f):
-            line_list = str(line).rsplit(',', 1)
-            search = line_list[0]
-            replace = line_list[1].strip()
-            search_pattern = re.compile(search)
-            if re.search(search_pattern, song):
-                song_repl = re.sub(search_pattern, replace, song)
-                song_json['song'] = song_repl
-                logger.info("Song After Replace Scrub: " + song_repl)
+    for song_match, song_replace in replace_song_dict.items():
+        pattern = re.compile(song_match)
+        if re.search(pattern, song):
+            song = re.sub(pattern, str(song_replace), song)
+            logger.info("Song After Replace Scrub: " + song)
+    song_json['song'] = song
     return song_json
 
 
@@ -44,3 +41,13 @@ def length_verification(song_json):
 
 def __is_comment(s):
     return s.startswith('#')
+
+
+def init():
+    # Load Song Replace Dictionary from File
+    fpath = os.path.join(os.path.dirname(__file__), '../filter_lists/edit_replace_song.txt')
+    with open(fpath, 'r') as f:
+        for line in filterfalse(__is_comment, f):
+            line_list = str(line).rsplit(',', 1)
+            replace_song_dict[str(line_list[0])] = str(line_list[1].strip())
+    logger.info("Loaded Song Replace Dictionary: " + str(len(replace_song_dict)) + " definitions.")

@@ -57,3 +57,7 @@ def init():
     with open(fpath, 'r') as f:
         for line in filterfalse(__is_comment, f):
             bad_songs.append(str(line).strip())
+    # Init Worker Classes
+    artist_scrub.init()
+    song_scrub.init()
+
