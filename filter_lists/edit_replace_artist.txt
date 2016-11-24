@@ -36,3 +36,5 @@ Jasmine Sullivan,Jazmine Sullivan
 ^Anderson\.Paak\/The Game\/Sonyae Elise$,Anderson .Paak/The Game/Sonyae Elise$
 ^Victoria Monét$,Victoria Monet
 ^Eminem ft Rihanna$,Eminem/Rihanna
+^McKinely Ave\/RJ$,McKinley Ave/RJ
+Sevyn Street,Sevyn Streeter

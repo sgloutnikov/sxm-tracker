@@ -56,3 +56,5 @@ F\*ckin,F**kin
 ^That's My Sh\*\*$,That's My Shit
 ^Dance \(Ass\) remix$,Dance (A$$) Remix
 ^Down On Me \(f\/50 Cent\)$,Down On Me
+^Good Feelings$,Good Feeling
+^LoveStar$,Love Star
