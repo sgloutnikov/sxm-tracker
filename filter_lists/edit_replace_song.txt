@@ -27,7 +27,7 @@ F\*ckin,F**kin
 ^Give Me Everything Tonight$,Give Me Everything
 ^Beautiful \(f\/Kardinal Offishall$,Beautiful
 ^Gangsta Luv \(f\/The-Dream\)$,Gangsta Luv
-^I'm In Love With A Stripper \(Rmx\)$,I'm N Luv (Wit a Stripper)
+^I'm In Love With A Stripper \(Rmx\) \($,I'm N Luv (Wit a Stripper)
 ^I Think They Like Me \(Remix\)$,I Think They Like Me
 ^My Last \(f\/Chris Brown\)$,My Last
 ^How Many Drinks \(REMIX\)$,How Many Drinks
