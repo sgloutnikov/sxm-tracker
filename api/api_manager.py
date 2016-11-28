@@ -8,12 +8,10 @@ import time
 
 logger = logging.getLogger(__name__)
 
-baseurl = 'https://www.siriusxm.com/metadata/pdt/en-us/json/channels/hotjamz/timestamp/'
-
 spotify_api = spotipy.Spotify()
 
 
-def get_now_playing_data():
+def get_now_playing_data(baseurl):
     timenow = (datetime.utcnow() - timedelta(minutes=1)).strftime('%m-%d-%H:%M:00')
     url = baseurl + timenow
     r = requests.get(url)

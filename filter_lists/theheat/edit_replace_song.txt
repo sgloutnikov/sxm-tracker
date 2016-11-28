@@ -8,8 +8,8 @@ F\*ckin,F**kin
 ^Uber Everywhere \(Remix\)$,Uber Everywhere (feat. Travis Scott)
 ^Lose Control \(f\/Nelly\)$,Lose Control
 ^One Night Stand \(f\/Chris Brown\)$,One Night Stand
-^Turning Me On \(08\)$,Turnin Me On
-^Nothing On You \(10\)$,Nothin' On You
+^Turning Me On$,Turnin Me On
+^Nothing On You$,Nothin' On You
 ^Thinking About You$,Thinkin Bout You
 ^All Of The Lights \(f\/Rihanna\)$,All Of The Lights
 ^Planes$,Planez
