@@ -1,1 +1,61 @@
-# sxm-collect
+# SiriusXM Now Playing Tracker
+
+Collects now playing song information from configured SiriusXM stations and stores them inside MongoDB. 
+Also adds Spotify data, and play count statistics. 
+
+Project is prepared to be hosted on Heroku, but can be hosted anywhere you like. 
+The project is currently configured to track 'The Heat' and 'The Highway' stations.
+
+### Configure and Run
+
+1. Edit `sxm_collect_config.ini` file accordingly.
+2. `MONGODB_URI` environment variable with MongoDB URI
+    * mongodb://localhost:27017/sxmdb
+3. Edit `sxm_collect.py` at the bottom accordingly.
+4. Run `python3 sxm_collect`
+
+
+### Sample Data
+ 
+theheat_nowplaying:
+ ```javascript
+ { 
+    "_id" : ObjectId("583b93c154619b0004e23a08"), 
+    "album" : "Views", 
+    "song" : "Too Good", 
+    "artist" : "Drake/Rihanna", 
+    "startTime" : ISODate("2016-11-28T02:15:18.000+0000"), 
+    "song_id" : "$OG7#e", 
+    "artist_id" : "9Uy", 
+    "spotify" : {
+        "album" : "Views", 
+        "song" : "Too Good", 
+        "artist" : "Drake, Rihanna", 
+        "album_image" : "https://i.scdn.co/image/e73c706e842eb5233eab7afd3404218a2696d568", 
+        "uri" : "spotify:track:7fJtPlEZKxu6gvkfBFc5tW", 
+        "url" : "https://open.spotify.com/track/7fJtPlEZKxu6gvkfBFc5tW"
+    }
+}
+ ```
+ 
+ theheat_songs:
+ ```javascript
+ { 
+    "_id" : ObjectId("582b9c30d2635e1fc39d179c"), 
+    "artist" : "Drake/Rihanna", 
+    "song" : "Too Good", 
+    "num_plays" : NumberInt(729), 
+    "artist_id" : "", 
+    "first_heard" : ISODate("2016-08-26T05:19:12.000+0000"), 
+    "song_id" : "", 
+    "last_heard" : ISODate("2016-11-28T02:15:18.000+0000"), 
+    "spotify" : {
+        "album" : "Views", 
+        "song" : "Too Good", 
+        "artist" : "Drake, Rihanna", 
+        "album_image" : "https://i.scdn.co/image/e73c706e842eb5233eab7afd3404218a2696d568", 
+        "uri" : "spotify:track:7fJtPlEZKxu6gvkfBFc5tW", 
+        "url" : "https://open.spotify.com/track/7fJtPlEZKxu6gvkfBFc5tW"
+    }
+}
+ ```
