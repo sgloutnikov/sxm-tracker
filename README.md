@@ -6,6 +6,10 @@ Also adds Spotify data, and play count statistics.
 Project is prepared to be hosted on Heroku, but can be hosted anywhere you like. 
 Current setup tracks 'The Heat' and 'The Highway' stations.
 
+### Uses
+* Python 3.5
+* MongoDB 3.2
+
 ### Configure and Run
 
 1. Edit `sxm_collect_config.ini` file accordingly.
