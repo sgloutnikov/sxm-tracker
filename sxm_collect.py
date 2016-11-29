@@ -1,6 +1,8 @@
 from apscheduler.schedulers.blocking import BlockingScheduler
 import logging.config
 import os
+import configparser
+from datetime import datetime, timedelta
 from db import db_manager
 from api import api_manager
 from scrubber import scrub_manager
@@ -42,11 +44,25 @@ def collect_now_playing(station, api_url):
 
 if __name__ == "__main__":
     logger.info("Starting Now Playing Collection")
-    db_manager.check_init_db('theheat')
-    scrub_manager.init('theheat')
-
+    config = configparser.ConfigParser()
+    config.read('sxm_collect_config.ini')
     scheduler = BlockingScheduler()
-    scheduler.add_job(collect_now_playing, kwargs={'station': 'theheat',
-                'api_url': 'https://www.siriusxm.com/metadata/pdt/en-us/json/channels/hotjamz/timestamp/'},
-                      trigger='interval', seconds=45)
+
+    # The Heat
+    theheat = 'theheat'
+    theheat_api_url = config[theheat]['api_url']
+    db_manager.check_init_db(theheat)
+    scrub_manager.init(theheat)
+
+    scheduler.add_job(collect_now_playing, kwargs={'station': theheat, 'api_url': theheat_api_url},
+                      next_run_time=datetime.now(), trigger='interval', seconds=45)
+
+    # The Highway
+    thehighway = 'thehighway'
+    thehighway_api_url = config[thehighway]['api_url']
+    db_manager.check_init_db(thehighway)
+    scrub_manager.init(thehighway)
+    scheduler.add_job(collect_now_playing, kwargs={'station': thehighway, 'api_url': thehighway_api_url},
+                      next_run_time=(datetime.now() + timedelta(seconds=20)), trigger='interval', seconds=45)
+
     scheduler.start()
