@@ -1,3 +1,4 @@
 # List of Bad Artists. Anything matched here is ignored.
 @SxmTheHighway
 fb.com
+@KimAshleyDJ
