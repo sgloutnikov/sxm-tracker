@@ -4,12 +4,12 @@ Collects now playing song information from configured SiriusXM stations and stor
 Also adds Spotify data, and play count statistics. 
 
 Project is prepared to be hosted on Heroku, but can be hosted anywhere you like. 
-The project is currently configured to track 'The Heat' and 'The Highway' stations.
+Current setup tracks 'The Heat' and 'The Highway' stations.
 
 ### Configure and Run
 
 1. Edit `sxm_collect_config.ini` file accordingly.
-2. `MONGODB_URI` environment variable with MongoDB URI
+2. `MONGODB_URI` environment variable with your MongoDB URI
     * mongodb://localhost:27017/sxmdb
 3. Edit `sxm_collect.py` at the bottom accordingly.
 4. Run `python3 sxm_collect`
