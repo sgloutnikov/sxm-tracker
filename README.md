@@ -15,8 +15,10 @@ Current setup tracks 'The Heat' and 'The Highway' stations.
 1. Edit `sxm_collect_config.ini` file accordingly.
 2. `MONGODB_URI` environment variable with your MongoDB URI
     * mongodb://localhost:27017/sxmdb
-3. Edit `sxm_collect.py` at the bottom accordingly.
-4. Run `python3 sxm_collect`
+3. Add the filter files (bad artist/song, replace artist/song) inside `filter_lists` for your station.
+    * See current setup for an example. They can be blank initially.
+4. Edit `sxm_collect.py` at the bottom accordingly.
+5. Run `python3 sxm_collect`
 
 
 ### Sample Data
