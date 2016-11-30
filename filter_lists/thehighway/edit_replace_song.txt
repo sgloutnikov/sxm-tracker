@@ -1,2 +1,3 @@
 # REGEX song string matched on left will be replaced with string on the right. Comma separated list.
-^80's Mercedes$,80s Mercedes
+^80's Mercedes$;80s Mercedes
+^Huntin', Fishin' And Lovin' Every D$;Huntin', Fishin' And Lovin' Every Day

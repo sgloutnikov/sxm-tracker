@@ -1,62 +1,62 @@
 # REGEX song string matched on left will be replaced with string on the right. Comma separated list.
-^Timmy Turner$,Tiimmy Turner
-\(BED\) XMRCHR - ,
-F\*ckin,F**kin
-^We Be Burning$,We Be Burnin
-\(Clean\),
-^IDFWU$,I Don't Fuck With You
-^Uber Everywhere \(Remix\)$,Uber Everywhere (feat. Travis Scott)
-^Lose Control \(f\/Nelly\)$,Lose Control
-^One Night Stand \(f\/Chris Brown\)$,One Night Stand
-^Turning Me On$,Turnin Me On
-^Nothing On You$,Nothin' On You
-^Thinking About You$,Thinkin Bout You
-^All Of The Lights \(f\/Rihanna\)$,All Of The Lights
-^Planes$,Planez
-^One Hunnid$,1Hunnid
-^Moment For Life \(f\/Drake\)$,Moment 4 Life
-^2AM \(Remix\)$,2AM
-^Aston Martin Music \(f\/Drake, Chrise$,Aston Martin Music
-^4am \(remix\)$,4AM
-^Motivation \(f\/Lil Wayne\)$,Motivation
-^Hotline Bling \(Cha Cha Remix\)$,Hotline Bling
-^What U Know$,What You Know
-^War Zone$,Warzone
-^Need You Bad$,Need U Bad
-^Shawty Is A Ten \(07$,Shawty Is Da Sh*!
-^Give Me Everything Tonight$,Give Me Everything
-^Beautiful \(f\/Kardinal Offishall$,Beautiful
-^Gangsta Luv \(f\/The-Dream\)$,Gangsta Luv
-^I'm In Love With A Stripper \(Rmx\) \($,I'm N Luv (Wit a Stripper)
-^I Think They Like Me \(Remix\)$,I Think They Like Me
-^My Last \(f\/Chris Brown\)$,My Last
-^How Many Drinks \(REMIX\)$,How Many Drinks
-^Juju On The Beat$,Juju On That Beat
-^Obsessed \(remix f\/Gucci Mane\)$,Obsessed (feat. Gucci Mane)
-^No Hands \(f\/Wale, Roscoe Dash\)$,No Hands
-^Guns N Roses$,Guns and Roses
-^Halfway \(Remix\)$,Halfway (Lil Wayne)
-^Love Hate Thing$,LoveHate Thing
-^Bust It Baby$,Bust it Baby Part 2
-^Nana$,Na Na
-^Unusual \(f\/Drake\)$,Unusual
-^Bottoms Up \(f\/Nicki Minaj\)$,Bottoms Up
-^5 Senses \(remix f\/50 Cent\)$,Waiter/The 5 Senses
-^My Sh\*t$,My Shit
-^3X N A ROW$,3 Times In a Row
-^Ain't Thinkin Bout You \(f\/Chris B$,Ain't Thinkin 'Bout You
-^What's It Gonna Be\?$,What's It Gonna Be
-^Bad B\*tch Alert$,She a Bad One
-^Lady in the Glass Dress$,Lady In a Glass Dress
-^Regret remix \(f\/ Ludacris\)$,Regret
-^All I Want Is You \(f\/ J\. Cole\)$,All I Want Is You
-^Out Of My Head \(f\/Trey Songz\)$,Out Of My Head
-^B\*tch Don't Kill My Vibe \(REMIX\)$,Bitch Don't Kill My Vibe (Remix)
-^Unthinkable \(I'm Ready\)$,Un-thinkable (I'm Ready)
-^That's My Sh\*\*$,That's My Shit
-^Dance \(Ass\) remix$,Dance (A$$) Remix
-^Down On Me \(f\/50 Cent\)$,Down On Me
-^Good Feelings$,Good Feeling
-^LoveStar$,Love Star
-^DJ Got Us Fallin' In Love \(f\/Pitbul$,DJ Got Us Fallin' In Love
-^What Goes Around\.\.\. Comes Around \(0$,What Goes Around.../ ...Comes Around
+^Timmy Turner$;Tiimmy Turner
+\(BED\) XMRCHR - ;
+F\*ckin;F**kin
+^We Be Burning$;We Be Burnin
+\(Clean\);
+^IDFWU$;I Don't Fuck With You
+^Uber Everywhere \(Remix\)$;Uber Everywhere (feat. Travis Scott)
+^Lose Control \(f\/Nelly\)$;Lose Control
+^One Night Stand \(f\/Chris Brown\)$;One Night Stand
+^Turning Me On$;Turnin Me On
+^Nothing On You$;Nothin' On You
+^Thinking About You$;Thinkin Bout You
+^All Of The Lights \(f\/Rihanna\)$;All Of The Lights
+^Planes$;Planez
+^One Hunnid$;1Hunnid
+^Moment For Life \(f\/Drake\)$;Moment 4 Life
+^2AM \(Remix\)$;2AM
+^Aston Martin Music \(f\/Drake, Chrise$;Aston Martin Music
+^4am \(remix\)$;4AM
+^Motivation \(f\/Lil Wayne\)$;Motivation
+^Hotline Bling \(Cha Cha Remix\)$;Hotline Bling
+^What U Know$;What You Know
+^War Zone$;Warzone
+^Need You Bad$;Need U Bad
+^Shawty Is A Ten \(07$;Shawty Is Da Sh*!
+^Give Me Everything Tonight$;Give Me Everything
+^Beautiful \(f\/Kardinal Offishall$;Beautiful
+^Gangsta Luv \(f\/The-Dream\)$;Gangsta Luv
+^I'm In Love With A Stripper \(Rmx\) \($;I'm N Luv (Wit a Stripper)
+^I Think They Like Me \(Remix\)$;I Think They Like Me
+^My Last \(f\/Chris Brown\)$;My Last
+^How Many Drinks \(REMIX\)$;How Many Drinks
+^Juju On The Beat$;Juju On That Beat
+^Obsessed \(remix f\/Gucci Mane\)$;Obsessed (feat. Gucci Mane)
+^No Hands \(f\/Wale; Roscoe Dash\)$;No Hands
+^Guns N Roses$;Guns and Roses
+^Halfway \(Remix\)$;Halfway (Lil Wayne)
+^Love Hate Thing$;LoveHate Thing
+^Bust It Baby$;Bust it Baby Part 2
+^Nana$;Na Na
+^Unusual \(f\/Drake\)$;Unusual
+^Bottoms Up \(f\/Nicki Minaj\)$;Bottoms Up
+^5 Senses \(remix f\/50 Cent\)$;Waiter/The 5 Senses
+^My Sh\*t$;My Shit
+^3X N A ROW$;3 Times In a Row
+^Ain't Thinkin Bout You \(f\/Chris B$;Ain't Thinkin 'Bout You
+^What's It Gonna Be\?$;What's It Gonna Be
+^Bad B\*tch Alert$;She a Bad One
+^Lady in the Glass Dress$;Lady In a Glass Dress
+^Regret remix \(f\/ Ludacris\)$;Regret
+^All I Want Is You \(f\/ J\. Cole\)$;All I Want Is You
+^Out Of My Head \(f\/Trey Songz\)$;Out Of My Head
+^B\*tch Don't Kill My Vibe \(REMIX\)$;Bitch Don't Kill My Vibe (Remix)
+^Unthinkable \(I'm Ready\)$;Un-thinkable (I'm Ready)
+^That's My Sh\*\*$;That's My Shit
+^Dance \(Ass\) remix$;Dance (A$$) Remix
+^Down On Me \(f\/50 Cent\)$;Down On Me
+^Good Feelings$;Good Feeling
+^LoveStar$;Love Star
+^DJ Got Us Fallin' In Love \(f\/Pitbul$;DJ Got Us Fallin' In Love
+^What Goes Around\.\.\. Comes Around \(0$;What Goes Around.../ ...Comes Around

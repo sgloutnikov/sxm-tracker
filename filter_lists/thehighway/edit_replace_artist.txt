@@ -1,3 +1,5 @@
 # REGEX artist string matched on left will be replaced with string on the right. Comma separated list.
-^Kenny Chesney \(With P!nk\)$,Kenny Chesney
-^Chris Young w\/Cassadee Pope$,Chris Young
+^Kenny Chesney \(With P!nk\)$;Kenny Chesney
+^Chris Young w\/Cassadee Pope$;Chris Young
+^Chris Young ft\. Vince Gill$;Chris Young
+^Luke Bryan ft Karen Fairchild$;Luke Bryan

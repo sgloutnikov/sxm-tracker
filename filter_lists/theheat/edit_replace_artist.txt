@@ -1,40 +1,40 @@
 # REGEX artist string matched on left will be replaced with string on the right. Comma separated list.
-J.Cole,J. Cole
-\/Various Artists,
-\(f\/Gucci Mane, Sean Garret\),
-TeeFLii,Tee Flii
-^B\.o\.B Ft\. Hayley Williams$,B.o.B
-Diggy Simmons,Diggy
-Jasmine Sullivan,Jazmine Sullivan
-^Flo Rida Ft. Ne-Yo$,Flo Rida
-^Kanye West ft T-Pain$,Kanye West
-^Justin Timberlake ft T\.I\.$,Justin Timberlake
-^T\/W\/R\/K\/Migos\/Sage The Gemini\/Sayyi$,TWRK
-^Pitbull ft\. Nayer, Ne-Yo$,Pitbull
-^Jamie Foxx & Twista$,Jamie Foxx
-^Jim Jones ft Baby$,Jim Jones
-^Akon & Young Jeezy$,Jeezy
-^Dem Franchize Boys\/Bow Wow\/JD\/Da Br$,Dem Franchize Boyz
-^Lil Wayne featuring Lil Wayne$,Lil Wayne
-^Ludacris ft T-Pain$,Ludacris
-^Kanye West & Lupe Fiasco$,Kanye West
-^Lil Jon f\. E-40\/Sean Paul$,Lil Jon
-^T\.I\. ft\. Jay-Z, Kanye West, Lil Way$,T.I.
-^Fabolous ft Ne-Yo$,Fabolous
-^Akon ft Eminem$,Akon
-^Plies ft Ne-Yo$,Plies
-^50 Cent & The Game$,50 Cent/The Game
-^Ludacris & Bobby V\.$,Ludacris/Bobby V.
-^Terror Squad f\/ Fat Joe & Remy$,Terror Squad/Fat Joe/Remy
-^New Boyz ft\. Ray J$,New Boyz/Ray J
-^Donnie Trumpet & The S\.E\.$,Donnie Trumpet & The Social Experiment
-^TK-N-CASH$,TK N Cash
-^Brandy & Monica$,^Brandy/Monica$
-^iHeart Memphis$,iLoveMemphis
-^Rae Srummerd$,Rae Sremmurd
-^Busta Rhymes f\/ Janet Jackson$,Busta Rhymes/Janet Jackson
-^Anderson\.Paak\/The Game\/Sonyae Elise$,Anderson .Paak/The Game/Sonyae Elise$
-^Victoria Monét$,Victoria Monet
-^Eminem ft Rihanna$,Eminem/Rihanna
-^McKinely Ave\/RJ$,McKinley Ave/RJ
-Sevyn Street,Sevyn Streeter
+J.Cole;J. Cole
+\/Various Artists;
+\(f\/Gucci Mane, Sean Garret\);
+TeeFLii;Tee Flii
+^B\.o\.B Ft\. Hayley Williams$;B.o.B
+Diggy Simmons;Diggy
+Jasmine Sullivan;Jazmine Sullivan
+^Flo Rida Ft. Ne-Yo$;Flo Rida
+^Kanye West ft T-Pain$;Kanye West
+^Justin Timberlake ft T\.I\.$;Justin Timberlake
+^T\/W\/R\/K\/Migos\/Sage The Gemini\/Sayyi$;TWRK
+^Pitbull ft\. Nayer, Ne-Yo$;Pitbull
+^Jamie Foxx & Twista$;Jamie Foxx
+^Jim Jones ft Baby$;Jim Jones
+^Akon & Young Jeezy$;Jeezy
+^Dem Franchize Boys\/Bow Wow\/JD\/Da Br$;Dem Franchize Boyz
+^Lil Wayne featuring Lil Wayne$;Lil Wayne
+^Ludacris ft T-Pain$;Ludacris
+^Kanye West & Lupe Fiasco$;Kanye West
+^Lil Jon f\. E-40\/Sean Paul$;Lil Jon
+^T\.I\. ft\. Jay-Z, Kanye West, Lil Way$;T.I.
+^Fabolous ft Ne-Yo$;Fabolous
+^Akon ft Eminem$;Akon
+^Plies ft Ne-Yo$;Plies
+^50 Cent & The Game$;50 Cent/The Game
+^Ludacris & Bobby V\.$;Ludacris/Bobby V.
+^Terror Squad f\/ Fat Joe & Remy$;Terror Squad/Fat Joe/Remy
+^New Boyz ft\. Ray J$;New Boyz/Ray J
+^Donnie Trumpet & The S\.E\.$;Donnie Trumpet & The Social Experiment
+^TK-N-CASH$;TK N Cash
+^Brandy & Monica$;^Brandy/Monica$
+^iHeart Memphis$;iLoveMemphis
+^Rae Srummerd$;Rae Sremmurd
+^Busta Rhymes f\/ Janet Jackson$;Busta Rhymes/Janet Jackson
+^Anderson\.Paak\/The Game\/Sonyae Elise$;Anderson .Paak/The Game/Sonyae Elise$
+^Victoria Monét$;Victoria Monet
+^Eminem ft Rihanna$;Eminem/Rihanna
+^McKinely Ave\/RJ$;McKinley Ave/RJ
+Sevyn Street;Sevyn Streeter

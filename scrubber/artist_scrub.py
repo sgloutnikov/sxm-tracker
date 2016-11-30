@@ -31,7 +31,7 @@ def init(station):
     fpath = os.path.join(os.path.dirname(__file__), '../filter_lists/' + station + '/edit_replace_artist.txt')
     with open(fpath, 'r') as f:
         for line in filterfalse(__is_comment, f):
-            line_list = str(line).rsplit(',', 1)
+            line_list = str(line).rsplit(';', 1)
             replace_artists[str(line_list[0])] = str(line_list[1].strip())
     replace_artist_dict[station] = replace_artists
     logger.info("[" + station + "] - " + "Loaded Artist Replace Dictionary: " +
