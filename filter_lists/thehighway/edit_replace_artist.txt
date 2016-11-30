@@ -3,3 +3,5 @@
 ^Chris Young w\/Cassadee Pope$;Chris Young
 ^Chris Young ft\. Vince Gill$;Chris Young
 ^Luke Bryan ft Karen Fairchild$;Luke Bryan
+^Kacey Musgraves w\/ Leon Bridges$;Kacey Musgraves
+^Kasey Musgraves$;Kacey Musgraves
