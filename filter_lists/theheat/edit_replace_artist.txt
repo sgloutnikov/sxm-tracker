@@ -37,4 +37,3 @@ Jasmine Sullivan;Jazmine Sullivan
 ^Victoria Monét$;Victoria Monet
 ^Eminem ft Rihanna$;Eminem/Rihanna
 ^McKinely Ave\/RJ$;McKinley Ave/RJ
-Sevyn Street;Sevyn Streeter
