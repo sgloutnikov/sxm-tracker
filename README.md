@@ -4,7 +4,7 @@ Collects now playing song information from configured SiriusXM stations and stor
 Also adds Spotify data, and play count statistics. 
 
 Project is prepared to be hosted on Heroku, but can be hosted anywhere you like. 
-Current setup tracks 'The Heat' and 'The Highway' stations. Web client can be found [here](https://github.com/sgloutnikov/sxm-tracker-web).
+Current setup tracks 'The Heat' and 'The Highway' stations. A web client can be found [here](https://github.com/sgloutnikov/sxm-tracker-web).
 
 ### Uses
 * Python 3.5
