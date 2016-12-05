@@ -38,3 +38,4 @@ Jasmine Sullivan;Jazmine Sullivan
 ^Eminem ft Rihanna$;Eminem/Rihanna
 ^McKinely Ave\/RJ$;McKinley Ave/RJ
 ^50 Cent & Snoop Dogg$;50 Cent/Snoop Dogg
+^Sevyn Street\/Chris Brown$;Sevyn Streeter/Chris Brown
