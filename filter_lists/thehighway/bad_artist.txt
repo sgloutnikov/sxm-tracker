@@ -1,7 +1,7 @@
 # List of Bad Artists. Anything matched here is ignored.
 @
 fb.com
-SiriusXM Music News
+SiriusXM
 Join The HWY Patrol!
 ^Download the SiriusXM App$
 ^YouTube Country Spotlight$
@@ -10,3 +10,6 @@ Join The HWY Patrol!
 ^The Highway$
 ^Friday Night Opry ON NOW!$
 ^#Hot30sxm$
+^Weekly EAS Test$
+^No Shoes Radio \(57\)$
+^Country Christmas$
