@@ -22,7 +22,7 @@ collection_songs = db[station + '_songs']
 scrub_manager.init(station)
 
 #songs = db.nowplaying.find({'song': {"$regex": 'Break Up'}}).sort("startTime", direction=ASCENDING)
-songs = collection_nowplaying.find({"song": "It Won't Stop", "spotify.url": ""}).sort("startTime", direction=ASCENDING)
+songs = collection_nowplaying.find({"song": "4Lit", "spotify.url": ""}).sort("startTime", direction=ASCENDING)
 
 counter = 1
 for song in songs:
@@ -38,6 +38,7 @@ for song in songs:
     song.pop('_id', None)
     print(song)
     collection_nowplaying.replace_one({'_id': ObjectId(song_id)}, song)
+    # TODO: Delete old in songs
     db_manager.save_in_songs(station, song)
     counter += 1
     time.sleep(0.5)
