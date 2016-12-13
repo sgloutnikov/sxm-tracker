@@ -4,7 +4,7 @@ from db import db_manager
 import re
 import os
 
-station = 'thehighway'
+station = 'theheat'
 collection = db_manager.db[station + "_nowplaying"]
 total = 0
 print("--- Starting Manual DB Clean ---")
