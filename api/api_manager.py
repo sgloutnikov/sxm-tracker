@@ -1,5 +1,6 @@
 import logging
 from datetime import datetime, timedelta
+from scrubber import song_scrub
 import requests
 import requests.exceptions
 import spotipy
@@ -48,7 +49,9 @@ def get_spotify(song_json):
         srch_artist = artist_list[0]
     else:
         srch_artist = artist
-    srch_song = song_json['song']
+
+    # Check if song length is at max capacity from SXM API (35) and remove the last word to match Spotify API
+    srch_song = song_scrub.length_verification(song_json['song'])
 
     # Escape some troublesome characters, but don't over-escape and miss searches
     if re.search(r'[*]', srch_song):

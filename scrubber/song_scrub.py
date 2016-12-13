@@ -30,13 +30,12 @@ def strip_year_tag(song_json):
 
 
 # If song length is 35 it has been stripped by the SXM API. Remove the last incomplete word.
-def length_verification(song_json):
-    song = str(song_json['song'])
+def length_verification(song_name):
+    song = str(song_name)
     if len(song) == 35:
         song = song.rsplit(' ', 1)[0]
         song = song.rstrip(',')
-    song_json['song'] = song
-    return song_json
+    return song
 
 
 def __is_comment(s):

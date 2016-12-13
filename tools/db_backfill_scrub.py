@@ -12,7 +12,7 @@ import time
 
 logging.basicConfig(filename='db_backfil_scrub.log',level=logging.DEBUG)
 
-station = 'theheat'
+station = 'thehighway'
 MONGODB_URI = os.environ.get('MONGODB_URI')
 client = MongoClient(MONGODB_URI)
 db = client.get_default_database()
@@ -22,7 +22,7 @@ collection_songs = db[station + '_songs']
 scrub_manager.init(station)
 
 #songs = db.nowplaying.find({'song': {"$regex": 'Break Up'}}).sort("startTime", direction=ASCENDING)
-songs = collection_nowplaying.find({"song": "Silent Night - Happy Holidays Mix"}).sort("startTime", direction=ASCENDING)
+songs = collection_nowplaying.find({"song": "I'll Be Home For Christmas (acapell"}).sort("startTime", direction=ASCENDING)
 
 counter = 1
 for song in songs:
