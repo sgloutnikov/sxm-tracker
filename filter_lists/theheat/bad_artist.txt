@@ -13,4 +13,4 @@ Listen On Demand!
 Weekly EAS Test
 866-545-HEAT
 fb.com
-#HolidaySoul
+^#HolidaySoul$
