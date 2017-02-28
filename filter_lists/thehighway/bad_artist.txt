@@ -13,4 +13,5 @@ Join The HWY Patrol!
 ^Weekly EAS Test$
 ^No Shoes Radio \(57\)$
 ^Country Christmas$
+Ch\.
 ^EAS Monthly Test$

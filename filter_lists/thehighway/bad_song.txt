@@ -1,12 +1,15 @@
 # List of Bad Songs. Anything matched here is ignored.
-@onthehighway
 Nashville Flash
 fb.com
-@SXMTheHighway
-^@stormewarren$
+@
 Listen on demand
 ^#OnTheHorizon$
 ^Download the App!$
 ^Find us on Snapchat!$
 SiriusXM
+Ch\.
+877
 1-866-CARE-MORE
+^Highway Finds Tour$
+^Ch57$
+^Channel 56$
