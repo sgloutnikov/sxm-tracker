@@ -4,12 +4,14 @@ from scrubber import song_scrub
 import requests
 import requests.exceptions
 import spotipy
+from spotipy.oauth2 import SpotifyClientCredentials
 import re
 import time
 
 logger = logging.getLogger(__name__)
 
-spotify_api = spotipy.Spotify()
+client_credentials_manager = SpotifyClientCredentials()
+spotify_api = spotipy.Spotify(client_credentials_manager=client_credentials_manager)
 
 
 def get_now_playing_data(baseurl):
