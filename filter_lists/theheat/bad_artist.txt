@@ -4,6 +4,7 @@ More HEAT!
 The Heat
 Sirius XM
 @
+#
 Top 35
 Shade 45
 The HOTNESS
@@ -13,7 +14,6 @@ Listen On Demand!
 Weekly EAS Test
 866-545-HEAT
 fb.com
-^#HolidaySoul$
 ^12 Days of Litmas$
 KekePalmerInterview
 D\.R\.A\.M\.\/Dion 2017 Break

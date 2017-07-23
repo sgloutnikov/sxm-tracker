@@ -2,6 +2,7 @@
 Nashville Flash
 fb.com
 @
+#
 Listen on demand
 ^#OnTheHorizon$
 ^Download the App!$
@@ -13,3 +14,5 @@ Ch\.
 ^Highway Finds Tour$
 ^Ch57$
 ^Channel 56$
+Ch61
+Ch18

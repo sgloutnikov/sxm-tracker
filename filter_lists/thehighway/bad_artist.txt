@@ -1,5 +1,6 @@
 # List of Bad Artists. Anything matched here is ignored.
 @
+#
 fb.com
 SiriusXM
 Join The HWY Patrol!
@@ -9,9 +10,11 @@ Join The HWY Patrol!
 ^SxmTheHighway$
 ^The Highway$
 ^Friday Night Opry ON NOW!$
-^#Hot30sxm$
 ^Weekly EAS Test$
 ^No Shoes Radio \(57\)$
 ^Country Christmas$
 Ch\.
 ^EAS Monthly Test$
+^Channels 55-62$
+^Channels 55 & 57$
+^Channels 58 & 61$
