@@ -4,6 +4,7 @@
 fb.com
 SiriusXM
 Join The HWY Patrol!
+^#Hot30sxm$
 ^Download the SiriusXM App$
 ^YouTube Country Spotlight$
 ^Listen on demand!$
