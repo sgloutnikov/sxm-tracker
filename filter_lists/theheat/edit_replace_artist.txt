@@ -40,3 +40,11 @@ Jasmine Sullivan;Jazmine Sullivan
 ^50 Cent & Snoop Dogg$;50 Cent/Snoop Dogg
 ^Sevyn Street\/Chris Brown$;Sevyn Streeter/Chris Brown
 ^Anderson\.Paak$;Anderson .Paak
+^Ray J & Lil' Kim$;Ray J, Lil' Kim
+^A- trak\/Quavo\/Lil Yachty$;A-Trak, Quavo, Lil Yachty
+^J\. Balvin\/Willy William\/Beyonce$;J Balvin, Willy William, Beyonce
+^Lil Wayne featuring Bobby Valentino$;Lil Wayne, Bobby V.
+^Justin Timberlake ft Jay-Z$;Justin Timberlake, Jay-Z
+^Usher ft\. Will\.I\.Am$;Usher, will.i.am
+^Ghostown DJs$;Ghost Town DJs
+^Robin Thicke ft T\.I\. & Pharrell$;Robin Thicke, T.I., Pharrell
