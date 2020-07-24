@@ -1,4 +1,6 @@
 import logging
+import os
+import sys
 from datetime import datetime, timedelta
 from scrubber import song_scrub
 import requests
@@ -10,59 +12,55 @@ import time
 
 logger = logging.getLogger(__name__)
 
+if "SPOTIPY_CLIENT_ID" not in os.environ:
+    logger.fatal("SPOTIPY_CLIENT_ID not provided")
+    sys.exit(0)
+if "SPOTIPY_CLIENT_SECRET" not in os.environ:
+    logger.fatal("SPOTIPY_CLIENT_SECRET not provided")
+    sys.exit(0)
+
 client_credentials_manager = SpotifyClientCredentials()
 spotify_api = spotipy.Spotify(client_credentials_manager=client_credentials_manager)
 
 
-def get_now_playing_data(baseurl):
-    timenow = (datetime.utcnow() - timedelta(minutes=1)).strftime('%m-%d-%H:%M:00')
-    url = baseurl + timenow
-    r = requests.get(url)
-    jsondata = r.json()
-    return jsondata
+def get_now_playing_data(sxm_api_url):
+    resp = requests.get(sxm_api_url)
+    json_data = resp.json()
+    return resp, json_data
 
 
 def extract_now_playing_data(full_json):
-    data = {}
-    data['artist_id'] = full_json['channelMetadataResponse']['metaData']['currentEvent']['artists']['id']
-    data['artist'] = full_json['channelMetadataResponse']['metaData']['currentEvent']['artists']['name']
-    data['song_id'] = full_json['channelMetadataResponse']['metaData']['currentEvent']['song']['id']
-    data['song'] = full_json['channelMetadataResponse']['metaData']['currentEvent']['song']['name']
-    data['album'] = full_json['channelMetadataResponse']['metaData']['currentEvent']['song']['album']['name']
-    data['startTime'] = full_json['channelMetadataResponse']['metaData']['currentEvent']['startTime']
-    data['spotify'] = {}
-    data['spotify']['artist'] = ''
-    data['spotify']['song'] = ''
-    data['spotify']['url'] = ''
-    data['spotify']['uri'] = ''
-    data['spotify']['album'] = ''
-    data['spotify']['album_image'] = ''
+    # Extract now playing from full JSON
+    data = dict()
+    station_name = next(iter(full_json["channels"]))
+    data["artist"] = full_json["channels"][station_name]["content"]["artists"][0]["name"]
+    data["title"] = full_json["channels"][station_name]["content"]["title"]
+    data["start_time"] = full_json["channels"][station_name]["content"]["starttime"]
+    data["spotify"] = dict()
     return data
 
 
-def get_spotify(song_json):
-    # TODO: Look to improve. Temp hack for how to not pull wrong spotify info for Beyonce - Sorry
-    if str(song_json['album']) == 'Lemonade':
-        return song_json
+def get_spotify(now_playing_json):
     # Check if multiple artists, use first to improve search results
-    artist = str(song_json['artist'])
-    artist_list = artist.split('/')
+    artist = str(now_playing_json["artist"])
+    artist_list = artist.split("/")
     if len(artist_list) > 1:
         srch_artist = artist_list[0]
     else:
         srch_artist = artist
 
     # Check if song length is at max capacity from SXM API (35) and remove the last word to match Spotify API
-    srch_song = song_scrub.length_verification(song_json['song'])
+    srch_title = song_scrub.length_verification(now_playing_json["title"])
 
-    # Escape some troublesome characters, but don't over-escape and miss searches
-    if re.search(r'[*]', srch_song):
-        srch_song = re.escape(srch_song)
+    # Escape some troublesome characters, but don"t over-escape and miss searches
+    if re.search(r"[*]", srch_title):
+        srch_title = re.escape(srch_title)
 
     # Search Spotify (requests has been flaky in my tests, retry if failed)
     for i in range(0, 3):
         try:
-            results = spotify_api.search(q='artist:' + srch_artist + ' track:' + srch_song, limit=1, type='track')
+            # results = spotify_api.search(q="artist:" + srch_artist + " track:" + srch_title, limit=1, type="track")
+            results = spotify_api.search(q=srch_artist + " " + srch_title, limit=1, type="track")
         except:
             logger.error("There was an error reaching Spotify WEB API. Retrying: " + str(i + 1))
             time.sleep(5)
@@ -70,32 +68,33 @@ def get_spotify(song_json):
         break
 
     # If found add it
-    if results['tracks']['total'] > 0:
-        logger.info("Adding Spotify: " + str(song_json['artist']) + " - " + str(song_json['song']))
-        spotify_track = results['tracks']['items'][0]
+    if results["tracks"]["total"] > 0:
+        logger.info("Adding Spotify: " + str(now_playing_json["artist"]) + " - " + str(now_playing_json["title"]))
+        spotify_track = results["tracks"]["items"][0]
 
         # Artist
-        delim = ''
-        spotify_artists = ''
-        for artist in spotify_track['artists']:
+        delim = ""
+        spotify_artists = ""
+        for artist in spotify_track["artists"]:
             spotify_artists += delim
-            spotify_artists += artist['name']
-            delim = ', '
-        song_json['spotify']['artist'] = spotify_artists
-        # Song
-        song_json['spotify']['song'] = spotify_track['name']
-        # URL
-        song_json['spotify']['url'] = spotify_track['external_urls']['spotify']
-        # URI
-        song_json['spotify']['uri'] = spotify_track['uri']
-        # Album
-        song_json['spotify']['album'] = spotify_track['album']['name']
-        # Album Image
-        if len(spotify_track['album']['images']) > 0:
-            song_json['spotify']['album_image'] = spotify_track['album']['images'][0]['url']
+            spotify_artists += artist["name"]
+            delim = ", "
 
-        return song_json
+        now_playing_json["spotify"]["artist"] = spotify_artists
+        # Title
+        now_playing_json["spotify"]["title"] = spotify_track["name"]
+        # URL
+        now_playing_json["spotify"]["url"] = spotify_track["external_urls"]["spotify"]
+        # URI
+        now_playing_json["spotify"]["uri"] = spotify_track["uri"]
+        # Album
+        now_playing_json["spotify"]["album"] = spotify_track["album"]["name"]
+        # Album Image
+        if len(spotify_track["album"]["images"]) > 0:
+            now_playing_json["spotify"]["album_image"] = spotify_track["album"]["images"][0]["url"]
+
+        return now_playing_json
     else:
-        logger.info("No Spotify Found: " + srch_artist + " (" + str(song_json['artist']) + ") - " +
-                     srch_song + " (" + str(song_json['song']) + ")")
-        return song_json
+        logger.info("No Spotify Found: " + srch_artist + " (" + str(now_playing_json["artist"]) + ") - " +
+                    srch_title + " (" + str(now_playing_json["title"]) + ")")
+        return now_playing_json

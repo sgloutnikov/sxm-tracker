@@ -32,7 +32,7 @@ for song in songs:
     song_id = song.get('_id')
     song = scrub_manager.scrub_artist(station, song)
     print(song)
-    song = scrub_manager.scrub_song(station, song)
+    song = scrub_manager.scrub_title(station, song)
     print(song)
     song = api_manager.get_spotify(song)
     song.pop('_id', None)
