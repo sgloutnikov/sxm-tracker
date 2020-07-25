@@ -4,7 +4,6 @@ import sys
 
 from pymongo import MongoClient, DESCENDING, ASCENDING
 from pymongo.errors import DuplicateKeyError
-from dateutil import parser
 
 logger = logging.getLogger(__name__)
 

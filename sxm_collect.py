@@ -18,24 +18,26 @@ logger = logging.getLogger(__name__)
 def collect_now_playing(station, api_url):
     resp, full_json = api_manager.get_now_playing_data(api_url)
     if resp.status_code == 200:
-        # TODO: Verify content dict has data available. If not, no data is available from station
-        current_np = api_manager.extract_now_playing_data(full_json)
-        last_playing = db_manager.get_last_streamed(station)
-        current_artist = str(current_np["artist"])
-        current_title = str(current_np["title"])
-        last_artist = str(last_playing["artist"])
-        last_title = str(last_playing["title"])
-        if (current_artist != last_artist) and (current_title != last_title):
-            logger.info("[" + station + "] - " + "New Song Detected: " +
-                        str(current_np["artist"]) + " - " + str(current_np["title"]))
-            if scrub_manager.is_clean(station, current_np["artist"], current_np["title"]):
-                current_np = scrub_manager.scrub_artist(station, current_np)
-                current_np = scrub_manager.scrub_title(station, current_np)
-                current_np = api_manager.get_spotify(current_np)
-                db_manager.save_new(station, current_np)
-            else:
-                logger.info("[" + station + "] - " + "-- Skipping: " + current_np["artist"]
-                            + " - " + current_np["title"])
+        if api_manager.has_song_data(full_json):
+            current_np = api_manager.extract_now_playing_data(full_json)
+            last_playing = db_manager.get_last_streamed(station)
+            current_artist = str(current_np["artist"])
+            current_title = str(current_np["title"])
+            last_artist = str(last_playing["artist"])
+            last_title = str(last_playing["title"])
+            if (current_artist != last_artist) and (current_title != last_title):
+                logger.info("[" + station + "] - " + "New Song Detected: " +
+                            str(current_np["artist"]) + " - " + str(current_np["title"]))
+                if scrub_manager.is_clean(station, current_np["artist"], current_np["title"]):
+                    current_np = scrub_manager.scrub_artist(station, current_np)
+                    current_np = scrub_manager.scrub_title(station, current_np)
+                    current_np = api_manager.get_spotify(current_np)
+                    db_manager.save_new(station, current_np)
+                else:
+                    logger.info("[" + station + "] - " + "-- Skipping: " + current_np["artist"]
+                                + " - " + current_np["title"])
+        else:
+            logger.info("[" + station + "] - " + "No song data in API reply")
     else:
         logger.error("[" + station + "] - " + "Error SXM API: " + resp.status_code + " " +
                      str(resp.content))

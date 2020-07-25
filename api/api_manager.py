@@ -1,7 +1,6 @@
 import logging
 import os
 import sys
-from datetime import datetime, timedelta
 from scrubber import song_scrub
 import requests
 import requests.exceptions
@@ -29,8 +28,18 @@ def get_now_playing_data(sxm_api_url):
     return resp, json_data
 
 
+def has_song_data(full_json):
+    station_name = next(iter(full_json["channels"]))
+    if "content" in full_json["channels"][station_name]:
+        if len(full_json["channels"][station_name]["content"]) > 0:
+            return True
+        else:
+            return False
+    else:
+        return False
+
+
 def extract_now_playing_data(full_json):
-    # Extract now playing from full JSON
     data = dict()
     station_name = next(iter(full_json["channels"]))
     data["artist"] = full_json["channels"][station_name]["content"]["artists"][0]["name"]
@@ -69,7 +78,8 @@ def get_spotify(now_playing_json):
 
     # If found add it
     if results["tracks"]["total"] > 0:
-        logger.info("Adding Spotify: " + str(now_playing_json["artist"]) + " - " + str(now_playing_json["title"]))
+        logger.info("Adding Spotify: " + str(now_playing_json["artist"]) + " - " + str(
+            now_playing_json["title"]))
         spotify_track = results["tracks"]["items"][0]
 
         # Artist
@@ -95,6 +105,7 @@ def get_spotify(now_playing_json):
 
         return now_playing_json
     else:
-        logger.info("No Spotify Found: " + srch_artist + " (" + str(now_playing_json["artist"]) + ") - " +
-                    srch_title + " (" + str(now_playing_json["title"]) + ")")
+        logger.info(
+            "No Spotify Found: " + srch_artist + " (" + str(now_playing_json["artist"]) + ") - " +
+            srch_title + " (" + str(now_playing_json["title"]) + ")")
         return now_playing_json
