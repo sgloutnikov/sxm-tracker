@@ -16,10 +16,6 @@ client = MongoClient(MONGODB_URI)
 db = client.get_default_database()
 
 
-# def save_full_sample_data(data):
-#     db.sampledata.insert_one(data)
-
-
 def save_new(station, now_playing_json):
     artist = str(now_playing_json["artist"])
     title = str(now_playing_json["title"])
