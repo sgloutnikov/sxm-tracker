@@ -18,6 +18,7 @@ logger = logging.getLogger(__name__)
 def collect_now_playing(station, api_url):
     resp, full_json = api_manager.get_now_playing_data(api_url)
     if resp.status_code == 200:
+        # TODO: Verify content dict has data available. If not, no data is available from station
         current_np = api_manager.extract_now_playing_data(full_json)
         last_playing = db_manager.get_last_streamed(station)
         current_artist = str(current_np["artist"])
