@@ -1,4 +1,4 @@
-import sys
+import threading
 
 from apscheduler.schedulers.blocking import BlockingScheduler
 import logging.config
@@ -8,11 +8,21 @@ from datetime import datetime, timedelta
 from db import db_manager
 from api import api_manager
 from scrubber import scrub_manager
+from http.server import HTTPServer, BaseHTTPRequestHandler
 
 
 log_config = os.path.join(os.path.dirname(__file__), "logging_config.ini")
 logging.config.fileConfig(log_config, disable_existing_loggers=False)
 logger = logging.getLogger(__name__)
+
+
+# HTTP Server to allow ping and prevention of Heroku dyno sleeping
+class SimpleHTTPRequestHandler(BaseHTTPRequestHandler):
+
+    def do_GET(self):
+        self.send_response(200)
+        self.end_headers()
+        self.wfile.write(b'It works!')
 
 
 def collect_now_playing(station, api_url):
@@ -44,6 +54,13 @@ def collect_now_playing(station, api_url):
 
 
 if __name__ == "__main__":
+    logger.info("Starting sleep prevention HTTPD server")
+    # Run a simple HTTP check to be pinged and prevent Heroku dyno from sleeping
+    httpd = HTTPServer(('', 8000), SimpleHTTPRequestHandler)
+    thread = threading.Thread(target=httpd.serve_forever)
+    thread.daemon = True
+    thread.start()
+
     logger.info("Starting Now Playing Collection")
     config = configparser.ConfigParser()
     config.read("sxm_collect_config.ini")

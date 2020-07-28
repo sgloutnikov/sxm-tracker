@@ -1,1 +1,1 @@
-clock: python sxm_collect.py
+web: python sxm_collect.py
