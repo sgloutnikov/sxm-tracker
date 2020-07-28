@@ -1,3 +1,4 @@
+import os
 import threading
 
 from apscheduler.schedulers.blocking import BlockingScheduler
@@ -55,8 +56,10 @@ def collect_now_playing(station, api_url):
 
 if __name__ == "__main__":
     logger.info("Starting sleep prevention HTTPD server")
-    # Run a simple HTTP check to be pinged and prevent Heroku dyno from sleeping
-    httpd = HTTPServer(('', 8000), SimpleHTTPRequestHandler)
+    # Run a simple HTTP check to be pinged and prevent Heroku dyno from sleeping.
+    # PORT is exposed by the Heroku environment
+    httpd_port = os.environ.get("PORT")
+    httpd = HTTPServer(('', int(httpd_port)), SimpleHTTPRequestHandler)
     thread = threading.Thread(target=httpd.serve_forever)
     thread.daemon = True
     thread.start()
