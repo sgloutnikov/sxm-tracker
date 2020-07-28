@@ -25,6 +25,10 @@ class SimpleHTTPRequestHandler(BaseHTTPRequestHandler):
         self.end_headers()
         self.wfile.write(b'It works!')
 
+    def do_HEAD(self):
+        self.send_response(200)
+        self.end_headers()
+
 
 def collect_now_playing(station, api_url):
     resp, full_json = api_manager.get_now_playing_data(api_url)
