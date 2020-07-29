@@ -28,10 +28,9 @@ def get_now_playing_data(sxm_api_url):
     return resp, json_data
 
 
-def has_song_data(full_json):
-    station_name = next(iter(full_json["channels"]))
-    if "content" in full_json["channels"][station_name]:
-        if len(full_json["channels"][station_name]["content"]) > 0:
+def has_song_data(station_json):
+    if "content" in station_json:
+        if len(station_json["content"]) > 0:
             return True
         else:
             return False
@@ -39,12 +38,11 @@ def has_song_data(full_json):
         return False
 
 
-def extract_now_playing_data(full_json):
+def extract_now_playing_data(station_json):
     data = dict()
-    station_name = next(iter(full_json["channels"]))
-    data["artist"] = full_json["channels"][station_name]["content"]["artists"][0]["name"]
-    data["title"] = full_json["channels"][station_name]["content"]["title"]
-    data["start_time"] = full_json["channels"][station_name]["content"]["starttime"]
+    data["artist"] = station_json["content"]["artists"][0]["name"]
+    data["title"] = station_json["content"]["title"]
+    data["start_time"] = station_json["content"]["starttime"]
     data["spotify"] = dict()
     return data
 
