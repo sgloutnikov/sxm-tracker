@@ -1,18 +1,17 @@
+import configparser
+import logging.config
 import os
 import threading
 import time
-
-import requests
-from apscheduler.schedulers.blocking import BlockingScheduler
-import logging.config
-import os
-import configparser
-from datetime import datetime, timedelta
-from db import db_manager
-from api import api_manager
-from scrubber import scrub_manager
+from datetime import datetime
 from http.server import HTTPServer, BaseHTTPRequestHandler
 from urllib.parse import urlparse, parse_qs
+
+from apscheduler.schedulers.blocking import BlockingScheduler
+
+from api import api_manager
+from db import db_manager
+from scrubber import scrub_manager
 
 log_config = os.path.join(os.path.dirname(__file__), "logging_config.ini")
 logging.config.fileConfig(log_config, disable_existing_loggers=False)
