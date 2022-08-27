@@ -84,7 +84,7 @@ if __name__ == "__main__":
     # Run a simple HTTP check to be pinged and prevent Heroku dyno from sleeping.
     # PORT is exposed by the Heroku environment
     httpd_port = os.environ.get("PORT")
-    httpd = HTTPServer(('', int(httpd_port)), SimpleHTTPRequestHandler)
+    httpd = HTTPServer(('0.0.0.0', int(httpd_port)), SimpleHTTPRequestHandler)
     thread = threading.Thread(target=httpd.serve_forever)
     thread.daemon = True
     thread.start()
